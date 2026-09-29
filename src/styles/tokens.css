@@ -1,0 +1,272 @@
+@import 'tailwindcss';
+
+/* Brand tokens (reference section 4). OKLCH shown for each so later palette work stays in one space.
+   Contrast checked 30 Sep 2026: oxblood/cream 9.39, ember/cream 4.82, steel/cream 5.11,
+   cream/forge 15.08, molten/forge 7.39, copper/forge 4.87, silver/forge 7.06, molten/oxblood 4.60.
+   Rules: copper text only at 24px+ on cream. Silver text never on light grounds (2.13:1). */
+@theme {
+  --color-oxblood: #7a0000;  /* oklch(36.4% 0.149 29.2) master */
+  --color-ember: #c0281b;    /* oklch(52.6% 0.190 29.7) buttons, links */
+  --color-molten: #f08a3c;   /* oklch(73.0% 0.153 54.5) dark grounds only */
+  --color-copper: #b87333;   /* oklch(61.8% 0.117 60.4) 24px+ or graphics */
+  --color-forge: #1a1210;    /* oklch(19.2% 0.014 34.4) warm black */
+  --color-cream: #efe7de;    /* oklch(93.2% 0.015 70.9) main ground */
+  --color-cream-2: #f7f2eb;  /* oklch(96.3% 0.011 76.6) raised surface */
+  --color-gunmetal: #2b2f33; /* oklch(30.3% 0.009 248.1) */
+  --color-steel: #5b6168;    /* oklch(49.0% 0.013 252.2) secondary text */
+  --color-silver: #9aa1a8;   /* oklch(70.6% 0.013 248.0) dark grounds only */
+  --color-silver-2: #c9ced3; /* oklch(84.9% 0.009 247.9) card borders on cream */
+  --color-mist: #e4e7ea;     /* oklch(92.7% 0.005 247.9) */
+
+  --font-display: 'Saira Semi Condensed', 'Arial Narrow', sans-serif;
+  --font-sans: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --radius-DEFAULT: 2px;
+  --radius-sm: 2px;
+}
+
+:root {
+  --heat: linear-gradient(90deg, #f08a3c 0%, #c0281b 28%, #b87333 52%, #9aa1a8 78%, #c9ced3 100%);
+  /* On cream the silver end disappears, so the light variant cools to steel. */
+  --heat-light: linear-gradient(90deg, #f08a3c 0%, #c0281b 28%, #b87333 55%, #5b6168 100%);
+  --header-h: 72px;
+  --gutter: 40px;
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  color-scheme: light;
+}
+
+@utility heat-rule {
+  height: 2px;
+  background-image: var(--heat);
+}
+@utility heat-rule-light {
+  height: 2px;
+  background-image: var(--heat-light);
+}
+@utility wrap {
+  width: 100%;
+  max-width: calc(1280px + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+@utility grain {
+  background-image: var(--grain);
+}
+
+/* Type scale (reference section 5). */
+@utility t-display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 72px;
+  line-height: 72px;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+@utility t-h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 64px;
+  line-height: 68px;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+@utility t-h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 44px;
+  line-height: 48px;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+@utility t-h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 34px;
+  text-wrap: balance;
+}
+@utility t-body {
+  font-size: 17px;
+  line-height: 27px;
+}
+@utility t-label {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+@utility t-data {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  line-height: 22px;
+  font-variant-numeric: tabular-nums;
+}
+@utility measure {
+  max-width: 68ch;
+}
+
+@layer base {
+  html {
+    scroll-padding-top: calc(var(--header-h) + 24px);
+  }
+  body {
+    background: var(--color-cream);
+    color: var(--color-gunmetal);
+    font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 27px;
+    min-width: 1240px;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 {
+    color: var(--color-oxblood);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-ember);
+    outline-offset: 2px;
+  }
+  .on-dark :focus-visible {
+    outline-color: var(--color-molten);
+  }
+  ::selection {
+    background: color-mix(in oklab, var(--color-ember) 22%, transparent);
+  }
+  input, select, textarea, button {
+    font: inherit;
+  }
+}
+
+/* ---------- Motion (reference section 6), CSS only ---------- */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes draw {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@keyframes breathe {
+  0%, 100% { opacity: 0.78; }
+  50% { opacity: 1; }
+}
+@keyframes bump {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.28); }
+  100% { transform: scale(1); }
+}
+@keyframes flash {
+  from { box-shadow: inset 4px 0 0 var(--color-molten); background-color: color-mix(in oklab, var(--color-molten) 14%, transparent); }
+  to { box-shadow: inset 4px 0 0 var(--color-ember); }
+}
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+/* Section entry: fade and 16px rise, once, driven by scroll position. */
+.reveal {
+  animation: rise linear both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 40%;
+}
+.draw {
+  transform-origin: left;
+  animation: draw linear both;
+  animation-timeline: view();
+  animation-range: entry 10% entry 70%;
+}
+.glow-breathe {
+  animation: breathe 12s ease-in-out infinite;
+}
+.bump {
+  animation: bump 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.row-added {
+  animation: flash 900ms ease-out both;
+}
+
+/* Card and tile hover: heat rule draws across the top in 250ms. */
+.heat-top {
+  position: relative;
+}
+.heat-top::before {
+  content: '';
+  position: absolute;
+  inset: -1px -1px auto -1px;
+  height: 2px;
+  background-image: var(--heat-light);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 250ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  z-index: 1;
+}
+.heat-top:hover::before,
+.heat-top:focus-within::before {
+  transform: scaleX(1);
+}
+
+/* Native dialog drawer: slide from right, 300ms. */
+dialog.drawer {
+  margin: 0 0 0 auto;
+  height: 100dvh;
+  max-height: 100dvh;
+  width: 440px;
+  max-width: 100vw;
+  padding: 0;
+  border: 0;
+  background: var(--color-cream);
+  color: var(--color-gunmetal);
+  transform: translateX(0);
+  transition: transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1), overlay 300ms allow-discrete, display 300ms allow-discrete;
+}
+dialog.drawer:not([open]) {
+  transform: translateX(100%);
+}
+@starting-style {
+  dialog.drawer[open] { transform: translateX(100%); }
+}
+dialog.drawer::backdrop {
+  background: rgb(26 18 16 / 0.5);
+  transition: background 300ms, overlay 300ms allow-discrete, display 300ms allow-discrete;
+}
+@starting-style {
+  dialog.drawer[open]::backdrop { background: rgb(26 18 16 / 0); }
+}
+
+/* Row highlight from search (?row=). */
+.row-target {
+  scroll-margin-top: calc(var(--header-h) + 48px);
+  box-shadow: inset 4px 0 0 var(--color-ember);
+  background: color-mix(in oklab, var(--color-molten) 16%, var(--color-cream-2)) !important;
+}
+
+/* Timeline spine fills as the page scrolls. */
+.spine-fill {
+  transform-origin: top;
+  animation: spine linear both;
+  animation-timeline: scroll(root);
+}
+@keyframes spine {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .draw, .glow-breathe, .bump, .row-added, .spine-fill {
+    animation: none !important;
+  }
+  .spine-fill { transform: none; }
+  .marquee-track { animation: none !important; }
+  dialog.drawer, dialog.drawer::backdrop, .heat-top::before {
+    transition: none;
+  }
+}
+
+/* One orchestrated load in the hero. */
+.hero-in {
+  animation: rise 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-in { animation: none; }
+}
