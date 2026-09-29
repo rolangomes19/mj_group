@@ -86,7 +86,7 @@ export default function Since1942() {
 function Entry({ e, left, anchor }: { e: TimelineEntry; left: boolean; anchor?: string }) {
   const badge = { founder: 'Founder', group: 'Group', steel: 'Steel' }[e.type]
   return (
-    <li id={anchor} className="relative grid grid-cols-2 gap-16 pb-16 scroll-mt-[calc(var(--header-h)+32px)]">
+    <li id={anchor} className="relative grid grid-cols-2 gap-16 pb-16 [&:not(:first-of-type)]:-mt-32 scroll-mt-[calc(var(--header-h)+32px)]">
       <span aria-hidden className="absolute start-1/2 top-3 h-4 w-4 -translate-x-1/2 rotate-45 border-2 border-oxblood bg-cream" />
       <article className={`reveal heat-top border border-silver-2 bg-cream-2 ${left ? 'col-start-1' : 'col-start-2'}`}>
         {e.slot && <Placeholder slot={e.slot} />}

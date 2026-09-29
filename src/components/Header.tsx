@@ -89,13 +89,13 @@ export function Header() {
           <button
             type="button"
             onClick={() => openDrawer(true)}
+            aria-label={`${t.quoteBtn}, ${count} lines`}
             className="inline-flex h-11 items-center gap-2 rounded-[2px] bg-ember px-4 text-[15px] font-semibold text-cream transition-shadow hover:shadow-[0_0_0_4px_rgb(240_138_60_/_.22)]"
           >
             {t.quoteBtn}
             <span key={bumpKey} className={`t-data grid h-6 min-w-6 place-items-center rounded-[2px] bg-cream/95 px-1 !text-[13px] text-oxblood ${bumpKey ? 'bump' : ''}`}>
               {count}
             </span>
-            <span className="sr-only">lines in your quote</span>
           </button>
         </div>
       </div>

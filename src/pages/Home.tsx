@@ -54,7 +54,7 @@ function Hero() {
           <p className="hero-in mt-7 max-w-[52ch] text-[19px] leading-[30px] text-silver" style={{ animationDelay: '160ms' }}>
             {t.hero.line}
           </p>
-          <div className="hero-in mt-10 max-w-[600px]" style={{ animationDelay: '240ms' }}>
+          <div className="hero-in relative z-20 mt-10 max-w-[600px]" style={{ animationDelay: '240ms' }}>
             <SearchBox size="lg" dark />
           </div>
           <div className="hero-in mt-6 flex gap-3" style={{ animationDelay: '300ms' }}>

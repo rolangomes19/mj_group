@@ -156,10 +156,6 @@
   40% { transform: scale(1.28); }
   100% { transform: scale(1); }
 }
-@keyframes flash {
-  from { box-shadow: inset 4px 0 0 var(--color-molten); background-color: color-mix(in oklab, var(--color-molten) 14%, transparent); }
-  to { box-shadow: inset 4px 0 0 var(--color-ember); }
-}
 @keyframes marquee {
   to { transform: translateX(-50%); }
 }
@@ -181,9 +177,6 @@
 }
 .bump {
   animation: bump 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-.row-added {
-  animation: flash 900ms ease-out both;
 }
 
 /* Card and tile hover: heat rule draws across the top in 250ms. */
@@ -253,7 +246,7 @@ dialog.drawer::backdrop {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal, .draw, .glow-breathe, .bump, .row-added, .spine-fill {
+  .reveal, .draw, .glow-breathe, .bump, .spine-fill {
     animation: none !important;
   }
   .spine-fill { transform: none; }

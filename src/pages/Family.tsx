@@ -1,5 +1,5 @@
 import { Check, FileText, MessageCircle, Plus, ShieldCheck } from 'lucide-react'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Navigate, useParams, useSearchParams } from 'react-router'
 import { CtaBand } from '../components/Blocks'
 import { Breadcrumb, Chip } from '../components/Bits'
@@ -19,7 +19,7 @@ import { formatKg, formatWeight, lineWeightKg, pieceKg } from '../data/weight'
 import { basketTotalKg, useBasket } from '../state/basket'
 import { useDemo } from '../state/demo'
 
-const th = 'sticky top-[var(--header-h)] z-10 bg-gunmetal px-4 py-3 text-[13px] font-semibold tracking-wide text-cream'
+const th = 'sticky top-[var(--header-h)] z-10 bg-gunmetal px-3 py-2.5 leading-4 text-[13px] font-semibold tracking-wide text-cream'
 
 export function Family() {
   const { group: groupId, family: familyId } = useParams()
@@ -104,7 +104,7 @@ function FamilyView({ family, groupName }: { family: FamilyT; groupName: string 
                 <div className="flex flex-wrap items-end gap-6 py-6">
                   <label className="flex flex-col gap-1.5">
                     <span className="text-[13px] font-semibold text-steel">{t.family.sizeSearch}</span>
-                    <input value={size} onChange={(e) => setSize(e.target.value)} placeholder={rows[0] ? rows[0].designation : ''} className={`${selectCls} t-data w-44 !h-10`} />
+                    <input value={size} onChange={(e) => setSize(e.target.value)} placeholder={rows[Math.floor(rows.length / 2)]?.designation ?? ''} className={`${selectCls} t-data w-44 !h-10`} />
                   </label>
                   {hasThick && (
                     <div className="flex flex-col gap-1.5">
@@ -245,7 +245,7 @@ function FamilyView({ family, groupName }: { family: FamilyT; groupName: string 
 function SizeRow({ row, family, hasThick, showLength, defaultLength, grade, target }: { row: Row; family: FamilyT; hasThick: boolean; showLength: boolean; defaultLength: number; grade: string; target: boolean }) {
   const [qty, setQty] = useState(1)
   const [length, setLength] = useState(row.lengths.includes(defaultLength) ? defaultLength : row.lengths[0] ?? 0)
-  const [flash, setFlash] = useState(0)
+  const trRef = useRef<HTMLTableRowElement>(null)
   const add = useBasket((s) => s.add)
   const addedQty = useBasket((s) => s.lines.filter((l) => l.rowId === row.id).reduce((n, l) => n + l.qty, 0))
 
@@ -262,10 +262,10 @@ function SizeRow({ row, family, hasThick, showLength, defaultLength, grade, targ
   return (
     <tr
       id={`row-${row.id}`}
-      key={flash}
-      className={`h-11 border-b border-silver-2 transition-colors odd:bg-cream-2 hover:bg-oxblood/[.06] ${addedQty ? 'shadow-[inset_4px_0_0_var(--color-ember)]' : ''} ${flash ? 'row-added' : ''} ${target ? 'row-target' : ''}`}
+      ref={trRef}
+      className={`h-11 border-b border-silver-2 transition-colors odd:bg-cream-2 hover:bg-oxblood/[.06] ${addedQty ? 'shadow-[inset_4px_0_0_var(--color-ember)]' : ''} ${target ? 'row-target' : ''}`}
     >
-      <th scope="row" className={`${td} t-data text-start font-normal text-oxblood`}>
+      <th scope="row" className={`${td} t-data whitespace-nowrap text-start font-normal text-oxblood`}>
         {label}
       </th>
       {hasThick && <td className={`${td} t-data text-end`}>{row.thickness?.toFixed(1)}</td>}
@@ -297,7 +297,15 @@ function SizeRow({ row, family, hasThick, showLength, defaultLength, grade, targ
           type="button"
           onClick={() => {
             add(row.id, qty, 'pcs', length, grade)
-            setFlash((f) => f + 1)
+            // Heat flash on the row. WAAPI so React's className updates can't cancel it.
+            if (!matchMedia('(prefers-reduced-motion: reduce)').matches)
+              trRef.current?.animate(
+                [
+                  { boxShadow: 'inset 6px 0 0 #f08a3c', backgroundColor: 'rgb(240 138 60 / .18)' },
+                  { boxShadow: 'inset 4px 0 0 #c0281b', backgroundColor: 'transparent' },
+                ],
+                { duration: 900, easing: 'ease-out' },
+              )
           }}
           className={`inline-flex h-8 w-[118px] items-center justify-center gap-1.5 rounded-[2px] text-[14px] font-semibold transition-colors ${
             addedQty ? 'border border-oxblood/50 bg-cream text-oxblood hover:border-ember hover:text-ember' : 'bg-ember text-cream hover:bg-[#b0231a]'
