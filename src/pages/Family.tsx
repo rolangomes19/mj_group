@@ -77,6 +77,19 @@ function FamilyView({ family, groupName }: { family: FamilyT; groupName: string 
                 </p>
               )}
             </div>
+            <dl className="col-span-4 self-end border-t-2 border-oxblood">
+              {[
+                ['Sizes in stock', String(rows.length)],
+                ['Grades', spec.grades.join(', ')],
+                ['Lengths', lengths.length ? lengths.map((l) => `${l} m`).join(', ') : family.pcLabel?.replace('kg/', 'Per ') ?? ''],
+                ['Certificate', 'EN 10204 3.1'],
+              ].map(([k, v]) => (
+                <div key={k} className="flex items-baseline justify-between gap-6 border-b border-silver-2 py-3">
+                  <dt className="text-[14px] text-steel">{k}</dt>
+                  <dd className="t-data text-end !text-[14px] text-gunmetal">{v}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </div>
       </section>
@@ -107,7 +120,7 @@ function FamilyView({ family, groupName }: { family: FamilyT; groupName: string 
                     <input value={size} onChange={(e) => setSize(e.target.value)} placeholder={rows[Math.floor(rows.length / 2)]?.designation ?? ''} className={`${selectCls} t-data w-44 !h-10`} />
                   </label>
                   {hasThick && (
-                    <div className="flex flex-col gap-1.5">
+                    <div className="order-last flex basis-full flex-col gap-1.5">
                       <span className="text-[13px] font-semibold text-steel">{isPipe ? 'Wall (mm)' : `${t.family.thickness} (mm)`}</span>
                       <div className="flex flex-wrap gap-1.5">
                         <Chip active={thick === null} onClick={() => setThick(null)}>

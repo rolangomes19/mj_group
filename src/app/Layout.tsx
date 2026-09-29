@@ -36,7 +36,7 @@ export function Layout() {
       <WhatsAppDialog />
       <WhatsAppFab />
       <PresenterBar />
-      <ScrollRestoration />
+      <ScrollRestoration getKey={(l) => (l.key === 'default' ? l.pathname : l.key)} />
       <HashScroll />
     </>
   )

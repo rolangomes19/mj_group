@@ -34,10 +34,13 @@ export function PresenterBar() {
   const nav = useNavigate()
 
   const reset = () => {
-    useBasket.getState().clear()
-    setQuote(null)
     nav('/')
     window.scrollTo(0, 0)
+    // After leaving the page, so Received's "no quote" redirect can't win the race.
+    setTimeout(() => {
+      useBasket.getState().clear()
+      setQuote(null)
+    }, 0)
   }
 
   useEffect(() => {

@@ -32,11 +32,12 @@ export function Placeholder({ slot, tone = 'none', fill, alt = '', className = '
           className="absolute inset-0 grid place-items-center bg-gunmetal"
           style={{
             backgroundImage:
-              'var(--grain), repeating-linear-gradient(135deg, rgb(255 255 255 / .05) 0 1px, transparent 1px 14px), linear-gradient(160deg, #3a3f45, #23272b)',
+              'repeating-linear-gradient(135deg, rgb(255 255 255 / .045) 0 1px, transparent 1px 14px), linear-gradient(160deg, #474d54, #2b2f33 70%)',
           }}
           role={alt ? 'img' : undefined}
           aria-label={alt || undefined}
         >
+          <span aria-hidden className="grain absolute inset-0 opacity-[.07]" />
           <span className="px-3 text-center font-mono text-[11px] leading-4 tracking-wide text-silver">
             {slot} · {info?.ratio.replace('/', ':') ?? '?'} · {info?.min ?? ''}
           </span>

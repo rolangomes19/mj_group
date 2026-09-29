@@ -11,7 +11,7 @@ const icons: Record<string, string> = Object.fromEntries(
 export function Icon({ name, size = 40, className = '' }: { name: string; size?: number; className?: string }) {
   const svg = icons[name]
   if (svg) return <span aria-hidden className={`inline-block shrink-0 ${className}`} style={{ width: size, height: size }} dangerouslySetInnerHTML={{ __html: svg }} />
-  const letters = name.replace(/^(group|step|proof|ind)-/, '').slice(0, 2).toUpperCase()
+  const letters = name.replace(/^(group|step|proof|ind|fam)-/, '').slice(0, 2).toUpperCase()
   return (
     <span
       aria-hidden
