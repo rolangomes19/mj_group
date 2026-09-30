@@ -1,7 +1,7 @@
 import { ArrowRight } from 'lucide-react'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router'
-import { CertBand, CtaBand, GradesTable, GroupTile } from '../components/Blocks'
+import { CertBand, CtaBand, GroupTile } from '../components/Blocks'
 import { ButtonLink } from '../components/Button'
 import { CountUp } from '../components/CountUp'
 import { HeatRule } from '../components/HeatRule'
@@ -35,11 +35,7 @@ function Hero() {
   const stats = t.proof.map((p) => (p.value === 'SIZES' ? { ...p, value: String(rows.length) } : p))
   return (
     <section className="on-dark relative isolate overflow-hidden bg-forge text-cream">
-      <div aria-hidden className="absolute inset-y-0 end-0 w-[58%]">
-        <Placeholder slot="hero-yard" fill tone="heat" />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,#1a1210_0%,rgb(26_18_16_/_.85)_22%,rgb(26_18_16_/_.2)_60%,rgb(26_18_16_/_.35)_100%)]" />
-      </div>
-      <div aria-hidden className="glow-breathe absolute inset-0" style={heroGlow} />
+      <div aria-hidden className="absolute inset-0" style={heroGlow} />
       <div aria-hidden className="absolute inset-0" style={brushed} />
       <div aria-hidden className="grain absolute inset-0 opacity-[.06]" />
 
@@ -48,7 +44,7 @@ function Hero() {
           <p className="hero-in font-mono text-[14px] tracking-wide text-molten" style={{ animationDelay: '0ms' }}>
             {t.hero.eyebrow}
           </p>
-          <h1 className="t-display hero-in mt-6 max-w-[15ch] text-cream" style={{ animationDelay: '80ms' }}>
+          <h1 className="t-display hero-in mt-6 max-w-[18ch] text-cream" style={{ animationDelay: '80ms' }}>
             {t.hero.title}
           </h1>
           <p className="hero-in mt-7 max-w-[52ch] text-[19px] leading-[30px] text-silver" style={{ animationDelay: '160ms' }}>
@@ -249,17 +245,12 @@ export function Home() {
   return (
     <>
       <Hero />
+      <FounderBand />
       <ShapeSelector />
-      <Section title={t.grades.title} intro={t.grades.intro} className="bg-cream-2" aside={<Link to="/standards" className="inline-flex items-center gap-2 font-semibold text-ember hover:underline underline-offset-4">{t.grades.link} <ArrowRight size={16} aria-hidden /></Link>}>
-        <div className="reveal border border-silver-2 bg-cream">
-          <GradesTable />
-        </div>
-      </Section>
+      <Steps />
       <Section title={t.certs.title} intro={t.certs.intro}>
         <CertBand />
       </Section>
-      <FounderBand />
-      <Steps />
       <Industries />
       <CtaBand />
     </>

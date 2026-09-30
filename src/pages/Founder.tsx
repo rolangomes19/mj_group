@@ -19,7 +19,7 @@ export default function Founder() {
           <Placeholder slot="founder-portrait" fill tone="heat" position="50% 18%" alt="" />
           <div className="absolute inset-0 bg-[linear-gradient(90deg,#1a1210_0%,rgb(26_18_16_/_.55)_30%,transparent_70%)]" />
         </div>
-        <div aria-hidden className="glow-breathe absolute inset-0" style={{ background: 'radial-gradient(45% 60% at 30% 100%, rgba(240,138,60,.35), rgba(192,40,27,.2) 45%, transparent 75%)' }} />
+        <div aria-hidden className="absolute inset-0" style={{ background: 'radial-gradient(45% 60% at 30% 100%, rgba(240,138,60,.35), rgba(192,40,27,.2) 45%, transparent 75%)' }} />
         <div aria-hidden className="grain absolute inset-0 opacity-[.06]" />
         <div className="wrap relative flex min-h-[720px] flex-col justify-end pb-24 pt-28">
           <p className="hero-in font-mono text-[14px] text-molten">{t.founderBand.label}</p>

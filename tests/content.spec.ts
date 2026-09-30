@@ -33,3 +33,13 @@ test('data patches', async ({ page }) => {
   await page.goto('/')
   await page.screenshot({ path: 'shots/tasks/03-home.png' })
 })
+
+test('home hero and order', async ({ page }) => {
+  await page.goto('/')
+  await page.waitForLoadState('networkidle')
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('84 years of trust. Now orderable by the row.')
+  const heads = await page.locator('main h2').allInnerTexts()
+  expect(heads.join('|')).not.toMatch(/Grades, side by side/)
+  await page.waitForTimeout(800)
+  await page.screenshot({ path: 'shots/tasks/05-hero.png' })
+})

@@ -19,8 +19,8 @@ export const t = {
   quoteBtn: 'Quote',
   hero: {
     eyebrow: 'Maghanmal Jethanand Group · Since 1942',
-    title: 'Pick the sizes. Get a quote in 2 hours.',
-    line: 'Pipes, sections, plates and more from our yards in Dubai and Sharjah. Pick a row. Get a quote.',
+    title: '84 years of trust. Now orderable by the row.',
+    line: 'Pipes, sections, plates and more from our yards in Dubai and Sharjah. Pick the sizes. Get a quote in 2 hours.',
     browse: 'Browse products',
     start: 'Start a quote',
   },
@@ -69,7 +69,7 @@ export const t = {
   industries: { title: 'Steel for the work you do', intro: 'The industries we supply every week, from single lengths to full project schedules.' },
   cta: {
     title: 'Send us your list.',
-    line: 'Forged in fire. Cut, counted and delivered from our yards.',
+    line: 'Cut, counted and delivered from our yards in Dubai and Sharjah.',
     start: 'Start a quote',
     whatsapp: 'WhatsApp us',
     boq: 'Upload a BOQ',
