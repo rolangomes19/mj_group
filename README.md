@@ -39,7 +39,6 @@ Every empty slot shows its name, ratio and minimum size. The full list is in `sr
 | industry-oilgas, -water, -construction, -peb, -machinery, -marine | Home industries | 3:2 | 1200 w |
 | founder-portrait, founder-band | Founder hero, Home founder band | 3:4, 4:5 | 1800 h, 1200 w |
 | founder-archive-1 to 3, founder-book | Founder page | 3:2, 4:5, 3:4 | 1400 w |
-| leader-lalchand, leader-ashwin | Founder page | 1:1 | 800 w |
 | proof-mtc, proof-stencil, proof-bundle | Family pages | 4:5 crop | 900 w |
 | cta-yard | CTA bands | 21:9 | 2400 w |
 | timeline-1 to 6 | Since 1942 | 4:3 | 1000 w |

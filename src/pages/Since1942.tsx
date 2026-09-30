@@ -18,6 +18,7 @@ const decade = (y: number) => Math.floor(y / 10) * 10
 
 export default function Since1942() {
   const [type, setType] = useState<(typeof filters)[number][0]>('all')
+  const shown = filters.filter(([k]) => k === 'all' || timeline.filter((e) => e.type === k).length > 1)
   const list = timeline.filter((e) => type === 'all' || e.type === type)
   const decades = [...new Set(list.map((e) => decade(e.year)))]
 
@@ -29,10 +30,10 @@ export default function Since1942() {
           <p className="hero-in font-mono text-[14px] text-molten">Maghanmal Jethanand Group</p>
           <h1 className="t-display hero-in mt-6 text-cream" style={{ animationDelay: '80ms' }}>Since 1942</h1>
           <p className="hero-in mt-6 max-w-[52ch] text-[19px] leading-[30px] text-silver" style={{ animationDelay: '160ms' }}>
-            From pearls and textiles in 1942 to steel for the UAE's skyline. The dates that shaped the group, and the man who started it.
+            The dates that shaped the group, and the man who started it.
           </p>
           <div className="hero-in mt-10 flex gap-2" style={{ animationDelay: '240ms' }} role="group" aria-label="Filter timeline">
-            {filters.map(([k, label]) => (
+            {shown.map(([k, label]) => (
               <button
                 key={k}
                 type="button"

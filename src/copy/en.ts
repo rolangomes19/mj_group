@@ -7,7 +7,6 @@ export const t = {
     { to: '/catalogue', label: 'Products' },
     { to: '/standards', label: 'Standards' },
     { to: '/#industries', label: 'Industries' },
-    { to: '/resources', label: 'Resources' },
     { to: '/founder', label: 'Our founder' },
     { to: '/since-1942', label: 'Since 1942' },
     { to: '#contact', label: 'Contact' },
@@ -166,8 +165,6 @@ export const t = {
     summary: 'What you asked for',
     whatsapp: 'WhatsApp this reference',
     browse: 'Browse more products',
-    trade: 'Trade account',
-    tradeLine: 'Repeat orders, saved lists and statements in one place.',
   },
   wa: {
     title: 'Opens WhatsApp with',

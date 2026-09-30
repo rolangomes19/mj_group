@@ -99,11 +99,6 @@ export function QuoteReceived() {
               </dd>
             </dl>
           </div>
-          <div className="heat-top border border-dashed border-steel/50 p-7">
-            <p className="font-mono text-[13px] text-steel">Coming soon</p>
-            <h2 className="t-h3 mt-2">{t.received.trade}</h2>
-            <p className="mt-2 text-[15px] leading-6 text-steel">{t.received.tradeLine}</p>
-          </div>
         </aside>
       </div>
     </div>

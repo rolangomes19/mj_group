@@ -22,8 +22,8 @@ export const founder = {
     { role: 'Chairman, ITL Cosmos Group', outlet: 'Gulf News', line: 'Remembered his work for education and the community.' },
   ],
   leaders: [
-    { slot: 'leader-lalchand', name: 'Dr Lalchand M Pancholia', role: 'Chairman' },
-    { slot: 'leader-ashwin', name: 'Ashwin L Pancholia', role: 'Chief Executive' },
+    { initials: 'LP', name: 'Dr Lalchand M Pancholia', role: 'Chairman' },
+    { initials: 'AP', name: 'Ashwin L Pancholia', role: 'Chief Executive' },
   ],
   sample: false,
 }

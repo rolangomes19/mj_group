@@ -1,6 +1,7 @@
 import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router'
 import { HeatRule } from '../components/HeatRule'
+import { MonogramPlate } from '../components/MonogramPlate'
 import { Placeholder } from '../components/Placeholder'
 import { Section } from '../components/Section'
 import { t } from '../copy/en'
@@ -113,7 +114,7 @@ export default function Founder() {
         <div className="grid grid-cols-12 gap-8">
           {founder.leaders.map((l, i) => (
             <article key={l.name} className={`col-span-4 ${i === 0 ? 'col-start-3' : ''}`}>
-              <Placeholder slot={l.slot} alt={l.name} />
+              <MonogramPlate initials={l.initials} label={l.name} />
               <h3 className="t-h3 mt-5">{l.name}</h3>
               <p className="text-steel">{l.role}</p>
             </article>

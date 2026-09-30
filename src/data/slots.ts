@@ -31,7 +31,5 @@ export const slots: Record<string, Slot> = {
   'founder-archive-2': { ratio: '4/5', min: '1400 w', subject: 'Family archive' },
   'founder-archive-3': { ratio: '4/5', min: '1400 w', subject: 'Family archive' },
   'founder-book': { ratio: '3/4', min: '900 w', subject: 'Book cover' },
-  'leader-lalchand': { ratio: '1/1', min: '800 w', subject: 'Dr Lalchand M Pancholia' },
-  'leader-ashwin': { ratio: '1/1', min: '800 w', subject: 'Ashwin L Pancholia' },
   ...Object.fromEntries(Array.from({ length: 8 }, (_, i) => [`timeline-${i + 1}`, { ratio: '4/3', min: '1000 w', subject: 'Timeline photo' }])),
 }
