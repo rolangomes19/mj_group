@@ -10,7 +10,6 @@ export const contact = {
   whatsappSample: true,
   replyPromise: 'Reply in 1 to 2 hours, Monday to Saturday, 8 AM to 6 PM.',
   replyShort: 'Quote back in 2 hours',
-  largeOrders: { label: 'Direct line for large orders', phone: '04 351 0500', sample: true },
 }
 
 export const locations = [

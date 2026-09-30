@@ -1,7 +1,6 @@
 import { ArrowRight } from 'lucide-react'
 import { useState } from 'react'
 import { Link } from 'react-router'
-import { CtaBand } from '../components/Blocks'
 import { HeatRule } from '../components/HeatRule'
 import { Placeholder } from '../components/Placeholder'
 import { SampleChip } from '../components/SampleChip'
@@ -78,7 +77,6 @@ export default function Since1942() {
           Read the founder's story <ArrowRight size={16} aria-hidden />
         </Link>
       </div>
-      <CtaBand />
     </>
   )
 }

@@ -55,7 +55,7 @@ export const t = {
   founderBand: {
     label: 'Our founder',
     line: 'Be honest, helpful and friendly.',
-    note: "His father's advice, as he recalled it. It still sets how we answer every quote.",
+    note: "His father's advice, as he recalled it.",
     link: 'Read his story',
   },
   steps: {

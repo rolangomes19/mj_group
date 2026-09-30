@@ -1,19 +1,13 @@
-import { ArrowRight, MessageCircle } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router'
-import { CtaBand } from '../components/Blocks'
-import { Button, ButtonLink } from '../components/Button'
 import { HeatRule } from '../components/HeatRule'
 import { Placeholder } from '../components/Placeholder'
-import { SampleChip } from '../components/SampleChip'
 import { Section } from '../components/Section'
 import { t } from '../copy/en'
-import { contact } from '../data/contact'
 import { founder } from '../data/founder'
 import { timeline } from '../data/timeline'
-import { useDemo } from '../state/demo'
 
 export default function Founder() {
-  const openWhatsApp = useDemo((s) => s.openWhatsApp)
   const teaser = timeline.filter((e) => e.type !== 'steel')
 
   return (
@@ -48,7 +42,6 @@ export default function Founder() {
             {founder.origin.map((p) => (
               <p key={p} className="measure">{p}</p>
             ))}
-            <p className="measure text-steel">From pearls and textiles in 1942 to steel for the UAE's skyline, the group has grown with the country it chose.</p>
           </div>
           <div className="col-span-6 col-start-7">
             <Placeholder slot="founder-archive-1" />
@@ -84,27 +77,6 @@ export default function Founder() {
         </div>
       </section>
 
-      {/* 5. What it means today */}
-      <Section title="What it means for your order today">
-        <div className="grid grid-cols-3 gap-8">
-          {founder.service.map((s) => (
-            <article key={s.word} className="reveal border-t-2 border-oxblood pt-6">
-              <h3 className="font-display text-[40px] font-semibold leading-[44px] text-oxblood">{s.word}</h3>
-              <p className="mt-4 max-w-[34ch] text-gunmetal">
-                {s.line}
-                <SampleChip sample={s.sample} />
-              </p>
-            </article>
-          ))}
-        </div>
-        <div className="mt-12 flex gap-3">
-          <ButtonLink to="/quote" size="lg">{t.cta.start}</ButtonLink>
-          <Button variant="secondary" size="lg" onClick={() => openWhatsApp(t.wa.default)}>
-            <MessageCircle size={18} aria-hidden /> {t.cta.whatsapp}
-          </Button>
-        </div>
-      </Section>
-
       {/* 6. Book + 7. Tributes */}
       <Section className="bg-cream-2">
         <div className="grid grid-cols-12 gap-8">
@@ -139,19 +111,13 @@ export default function Founder() {
       {/* 8. Leadership */}
       <Section title="The group today" intro="The family still runs the business he started.">
         <div className="grid grid-cols-12 gap-8">
-          {founder.leaders.map((l) => (
-            <article key={l.name} className="col-span-4">
+          {founder.leaders.map((l, i) => (
+            <article key={l.name} className={`col-span-4 ${i === 0 ? 'col-start-3' : ''}`}>
               <Placeholder slot={l.slot} alt={l.name} />
               <h3 className="t-h3 mt-5">{l.name}</h3>
               <p className="text-steel">{l.role}</p>
             </article>
           ))}
-          <div className="col-span-4 flex flex-col justify-end border-t-2 border-ember pt-6">
-            <p className="text-[15px] text-steel">{contact.largeOrders.label}</p>
-            <a href={`tel:${contact.largeOrders.phone.replace(/\s/g, '')}`} className="t-data mt-2 !text-[32px] !leading-[36px] text-oxblood hover:text-ember">
-              {contact.largeOrders.phone}
-            </a>
-          </div>
         </div>
       </Section>
 
@@ -169,8 +135,6 @@ export default function Founder() {
         </ol>
       </Section>
 
-      {/* 10. CTA */}
-      <CtaBand />
     </>
   )
 }

@@ -15,11 +15,6 @@ export const founder = {
   ],
   values: 'Be honest, helpful and friendly.',
   valuesNote: "His father's advice, as he recalled it.",
-  service: [
-    { word: 'Honest', line: 'Your quote lists the exact size, grade and standard you asked for. If we suggest another, we say so on the line.', sample: true },
-    { word: 'Helpful', line: 'A reply within 2 hours in working hours, with weights worked out and a delivery date.', sample: true },
-    { word: 'Friendly', line: 'One named contact from quote to delivery, on the phone or on WhatsApp.', sample: true },
-  ],
   book: { title: 'Footprints: Memoirs of an Indian Patriarch', publisher: 'Motivate Publishing', year: '2009' },
   tributes: [
     { role: 'Consul General of India in Dubai', outlet: 'Khaleej Times', line: 'Spoke of his place at the heart of the Indian community in the UAE.' },
