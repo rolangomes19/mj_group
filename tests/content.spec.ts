@@ -11,6 +11,7 @@ const text = async (page: import('@playwright/test').Page, path: string) => {
 test('founder page has no sales', async ({ page }) => {
   const body = await text(page, '/founder')
   expect(body).not.toMatch(/Start a quote|WhatsApp|04 351 0500|What it means for your order/i)
+  expect(body).not.toMatch(/founder-archive|founder-book|1:1 ·/)
   await page.screenshot({ path: 'shots/tasks/02-founder.png', fullPage: true })
 })
 

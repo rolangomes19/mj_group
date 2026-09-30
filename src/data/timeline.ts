@@ -11,6 +11,6 @@ export const timeline: TimelineEntry[] = [
   { year: 1965, type: 'founder', title: 'Dubai Chamber board', body: 'Served on the Dubai Chamber board from 1965 to 1980.', sample: false, source: pb },
   { year: 2009, type: 'founder', title: 'Footprints', body: 'His memoir, Footprints: Memoirs of an Indian Patriarch, is published by Motivate.', slot: 'timeline-4', sample: false, source: pb },
   { year: 2019, type: 'founder', title: 'Passes away', body: 'Maghanmal Jethanand Pancholia passes away on 2 September 2019.', sample: false, source: pb },
-  { year: 2024, type: 'steel', title: 'ISO 9001:2015', body: 'The quality management system is certified to ISO 9001:2015 by WRG Certifications.', slot: 'timeline-6', sample: false, source: 'MJ catalogue' },
+  { year: 2024, type: 'steel', title: 'ISO 9001:2015', body: 'The quality management system is certified to ISO 9001:2015 by WRG Certifications.', sample: false, source: 'MJ catalogue' },
   { year: 2024, type: 'founder', title: '100 years', body: 'His 100th birth anniversary is marked in October 2024.', sample: false, source: 'Gulf News' },
 ]

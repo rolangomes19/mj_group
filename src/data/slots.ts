@@ -20,7 +20,7 @@ export const slots: Record<string, Slot> = {
   'founder-portrait': { ratio: '3/4', min: '1800 h', subject: 'Portrait' },
   'founder-archive-1': { ratio: '3/2', min: '1400 w', subject: 'Family archive' },
   'founder-archive-2': { ratio: '4/5', min: '1400 w', subject: 'Family archive' },
-  'founder-book': { ratio: '3/4', min: '900 w', subject: 'Book cover' },
-  // Timeline photos used on Since 1942: 1942, 1957, 2009 and 2024.
-  ...Object.fromEntries([1, 2, 4, 6].map((n) => [`timeline-${n}`, { ratio: '4/3', min: '1000 w', subject: 'Timeline photo' }])),
+  'founder-archive-3': { ratio: '7/5', min: '1400 w', subject: 'Family archive' },
+  // Timeline photos used on Since 1942: 1942, 1957 and 2009.
+  ...Object.fromEntries([1, 2, 4].map((n) => [`timeline-${n}`, { ratio: '4/3', min: '1000 w', subject: 'Timeline photo' }])),
 }

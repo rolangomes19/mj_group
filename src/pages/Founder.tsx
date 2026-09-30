@@ -36,7 +36,7 @@ export default function Founder() {
         <HeatRule className="relative" />
       </section>
 
-      {/* 2. Origin */}
+      {/* 2. Beginnings */}
       <Section title="From Karachi to the Creek">
         <div className="grid grid-cols-12 items-center gap-8">
           <div className="col-span-5 space-y-5 text-[19px] leading-[31px]">
@@ -45,25 +45,41 @@ export default function Founder() {
             ))}
           </div>
           <div className="col-span-6 col-start-7">
-            <Placeholder slot="founder-archive-1" />
+            <Placeholder slot="founder-archive-1" position="30% 50%" alt="Maghanmal Jethanand Pancholia in his office" />
           </div>
         </div>
       </Section>
 
-      {/* 3. Civic firsts */}
-      <Section title="A life of civic firsts" className="bg-cream-2">
-        <div className="grid grid-cols-12 gap-6">
-          <div className="col-span-8 grid grid-cols-2 gap-6">
+      {/* 3. Building Dubai */}
+      <Section title="Building Dubai" className="bg-cream-2">
+        <div className="grid grid-cols-12 items-start gap-10">
+          <ol className="col-span-7 divide-y divide-silver-2 border-y border-silver-2">
             {founder.civic.map((c) => (
-              <article key={c.title} className="heat-top reveal border border-silver-2 bg-cream p-8">
-                <p className={`t-data text-copper ${/^\d+$/.test(c.year) ? '!text-[44px] !leading-[48px]' : '!text-[26px] !leading-[48px]'}`}>{c.year}</p>
-                <h3 className="t-h3 mt-4">{c.title}</h3>
-                <p className="mt-3 text-steel">{c.body}</p>
-              </article>
+              <li key={c.title} className="reveal grid grid-cols-[150px_1fr] gap-8 py-8">
+                <p className="t-data !text-[44px] !leading-[48px] text-copper">{c.year}</p>
+                <div>
+                  <h3 className="t-h3">{c.title}</h3>
+                  <p className="mt-3 max-w-[46ch] text-[18px] leading-[29px] text-steel">{c.body}</p>
+                </div>
+              </li>
             ))}
+          </ol>
+          <div className="col-span-4 col-start-9">
+            <Placeholder slot="founder-archive-2" position="60% 40%" alt="Maghanmal Jethanand Pancholia at his desk" />
           </div>
-          <div className="col-span-4 grid gap-6">
-            <Placeholder slot="founder-archive-2" />
+        </div>
+      </Section>
+
+      {/* 4. School and club */}
+      <Section title="A school and a club">
+        <div className="grid grid-cols-12 items-center gap-10">
+          <div className="col-span-6">
+            <Placeholder slot="founder-archive-3" alt="Maghanmal Jethanand Pancholia holding a photograph of The Indian High School" />
+          </div>
+          <div className="col-span-5 col-start-8 space-y-5 text-[19px] leading-[31px]">
+            {founder.community.map((p) => (
+              <p key={p} className="measure">{p}</p>
+            ))}
           </div>
         </div>
       </Section>
@@ -78,21 +94,16 @@ export default function Founder() {
         </div>
       </section>
 
-      {/* 6. Book + 7. Tributes */}
-      <Section className="bg-cream-2">
-        <div className="grid grid-cols-12 gap-8">
-          <div className="col-span-4">
-            <div className="w-[260px] shadow-[0_30px_60px_-30px_rgb(26_18_16_/_.6)]">
-              <Placeholder slot="founder-book" />
-            </div>
+      {/* 6. Later years and tributes */}
+      <Section title="In later years" className="bg-cream-2">
+        <div className="grid grid-cols-12 gap-10">
+          <div className="col-span-5 space-y-5 text-[19px] leading-[31px]">
+            {founder.later.map((p) => (
+              <p key={p} className="measure">{p}</p>
+            ))}
           </div>
-          <div className="col-span-8">
-            <p className="font-mono text-[14px] text-steel">His memoir</p>
-            <h2 className="t-h2 mt-3 max-w-[20ch]">{founder.book.title}</h2>
-            <p className="mt-4 text-steel">
-              {founder.book.publisher}, {founder.book.year}
-            </p>
-            <h3 className="t-h3 mt-16">Remembered by</h3>
+          <div className="col-span-6 col-start-7">
+            <h3 className="t-h3">Remembered by</h3>
             <HeatRule light className="mt-4 w-24" />
             <ul className="mt-6 divide-y divide-silver-2 border-y border-silver-2">
               {founder.tributes.map((tr) => (
