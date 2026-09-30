@@ -4,7 +4,7 @@ import { Link, useParams, useSearchParams } from 'react-router'
 import { CtaBand, GroupTile } from '../components/Blocks'
 import { Breadcrumb, Chip } from '../components/Bits'
 import { HeatRule } from '../components/HeatRule'
-import { Icon } from '../components/Icon'
+import { ProductIcon } from '../components/ProductIcon'
 import { SearchBox } from '../components/SearchBox'
 import { t } from '../copy/en'
 import { families } from '../data/families'
@@ -21,7 +21,7 @@ function FamilyCard({ f }: { f: Family }) {
       className="heat-top group flex flex-col border border-silver-2 bg-cream-2 p-8 transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_36px_-24px_rgb(26_18_16_/_.55)]"
     >
       <div className="flex items-start justify-between gap-4">
-        <Icon name={`fam-${f.id}`} size={40} className="text-steel" />
+        <ProductIcon name={f.id} size="m" label />
         <span className="t-data border border-silver-2 bg-cream px-2 !text-[13px] text-gunmetal">{f.standard}</span>
       </div>
       <h3 className="t-h3 mt-6">{f.name}</h3>

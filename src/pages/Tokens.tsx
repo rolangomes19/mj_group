@@ -1,3 +1,5 @@
+import { families } from '../data/families'
+import { ProductIcon } from '../components/ProductIcon'
 import { Button } from '../components/Button'
 import { HeatRule } from '../components/HeatRule'
 import { Icon } from '../components/Icon'
@@ -46,6 +48,13 @@ export default function Tokens() {
         </div>
         <Icon name="group-pipes" />
         <Icon name="step-reply" />
+      </section>
+      <section className="grid grid-cols-4 gap-6">
+        {families.map((f) => (
+          <div key={f.id} className="heat-top border border-silver-2 bg-cream-2 p-4">
+            <ProductIcon name={f.id} size="l" label />
+          </div>
+        ))}
       </section>
       <section className="grid grid-cols-3 gap-6">
         <Placeholder slot="founder-band" />

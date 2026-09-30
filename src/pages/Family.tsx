@@ -7,6 +7,7 @@ import { ButtonLink } from '../components/Button'
 import { HeatRule } from '../components/HeatRule'
 import { QtyStepper, selectCls } from '../components/LineControls'
 import { Placeholder } from '../components/Placeholder'
+import { ProductIcon } from '../components/ProductIcon'
 import { t } from '../copy/en'
 import { contact } from '../data/contact'
 import { familyById } from '../data/families'
@@ -77,7 +78,11 @@ function FamilyView({ family, groupName }: { family: FamilyT; groupName: string 
                 </p>
               )}
             </div>
-            <dl className="col-span-4 self-end border-t-2 border-oxblood">
+            <div className="col-span-4 flex flex-col self-end">
+            <div className="heat-top mb-6 border border-silver-2 bg-cream-2 p-3">
+              <ProductIcon name={family.id} size="l" label className="!w-full" />
+            </div>
+            <dl className="border-t-2 border-oxblood">
               {[
                 ['Sizes in stock', String(rows.length)],
                 ['Grades', spec.grades.join(', ')],
@@ -90,6 +95,7 @@ function FamilyView({ family, groupName }: { family: FamilyT; groupName: string 
                 </div>
               ))}
             </dl>
+            </div>
           </div>
         </div>
       </section>

@@ -7,6 +7,7 @@ import { CountUp } from '../components/CountUp'
 import { HeatRule } from '../components/HeatRule'
 import { Icon } from '../components/Icon'
 import { Placeholder } from '../components/Placeholder'
+import { ProductIcon } from '../components/ProductIcon'
 import { SearchBox, rowHref } from '../components/SearchBox'
 import { Section } from '../components/Section'
 import { t } from '../copy/en'
@@ -64,7 +65,14 @@ function Hero() {
         </div>
 
         <div className="col-span-5 flex items-center justify-end">
-          <QuoteSlip />
+          <div className="relative w-[520px] pb-28">
+            <div className="heat-top relative w-[440px] border border-silver-2 bg-cream-2">
+              <ProductIcon name="ipe" size="xl" label="overlay" className="!w-full" />
+            </div>
+            <div className="absolute bottom-0 end-0">
+              <QuoteSlip />
+            </div>
+          </div>
         </div>
 
         <dl className="col-span-12 mt-20 grid grid-cols-5 border-t border-cream/15">

@@ -196,6 +196,17 @@
   transform: scaleX(1);
 }
 
+/* Product icons: hot layer fades in with the tile or card hover. 250ms in, 400ms settle. */
+.pi .hot {
+  opacity: 0;
+  transition: opacity 400ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.heat-top:hover .pi .hot,
+.heat-top:focus-within .pi .hot {
+  opacity: 1;
+  transition-duration: 250ms;
+}
+
 /* Native dialog drawer: slide from right, 300ms. */
 dialog.drawer {
   margin: 0 0 0 auto;
@@ -248,7 +259,7 @@ dialog.drawer::backdrop {
   }
   .spine-fill { transform: none; }
   .marquee-track { animation: none !important; }
-  dialog.drawer, dialog.drawer::backdrop, .heat-top::before {
+  dialog.drawer, dialog.drawer::backdrop, .heat-top::before, .pi .hot {
     transition: none;
   }
 }

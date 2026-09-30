@@ -62,3 +62,17 @@ test('no letter chips in steps and industries', async ({ page }) => {
   await page.waitForLoadState('networkidle')
   await expect(page.locator('main [title^="step-"], main [title^="ind-"]')).toHaveCount(0)
 })
+
+test('product icons and hot state', async ({ page }) => {
+  await page.goto('/')
+  await page.waitForLoadState('networkidle')
+  const tile = page.locator('main a.heat-top').filter({ hasText: 'Structural Sections' })
+  await tile.scrollIntoViewIfNeeded()
+  const hot = tile.locator('.hot').first()
+  await expect(tile.locator('.pi svg')).toHaveCount(1)
+  expect(await hot.evaluate((e) => getComputedStyle(e).opacity)).toBe('0')
+  await tile.hover()
+  await expect.poll(() => hot.evaluate((e) => getComputedStyle(e).opacity)).toBe('1')
+  await page.screenshot({ path: 'shots/tasks/07-tiles-hot.png' })
+  await expect(page.locator('main')).not.toContainText(/tile-pipes|hero-yard/)
+})

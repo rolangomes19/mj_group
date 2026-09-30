@@ -9,6 +9,8 @@ export type Group = {
   use: string
   icon: string
   photo: string
+  /** Family whose drawing leads the group tile. */
+  lead: string
 }
 
 export type Spec = {

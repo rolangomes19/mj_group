@@ -9,8 +9,8 @@ import { useDemo } from '../state/demo'
 import { Button, ButtonLink } from './Button'
 import { Cert204Label } from './Cert204Label'
 import { HeatRule } from './HeatRule'
-import { Icon } from './Icon'
 import { Placeholder } from './Placeholder'
+import { ProductIcon } from './ProductIcon'
 import { SampleChip } from './SampleChip'
 
 export function GroupTile({ group }: { group: Group }) {
@@ -20,12 +20,11 @@ export function GroupTile({ group }: { group: Group }) {
       to={`/catalogue/${group.id}`}
       className="heat-top group flex flex-col border border-silver-2 bg-cream-2 transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_36px_-24px_rgb(26_18_16_/_.55)]"
     >
-      <Placeholder slot={group.photo} tone="heat" />
+      <div className="relative aspect-[4/3] overflow-hidden border-b border-silver-2 bg-cream">
+        <ProductIcon name={group.lead} size="l" label="overlay" className="absolute inset-0 !w-full" />
+      </div>
       <div className="flex flex-1 flex-col p-6">
-        <div className="flex items-start justify-between gap-3">
-          <h3 className="font-display text-[24px] leading-7 text-oxblood">{group.name}</h3>
-          <Icon name={group.icon} size={32} className="text-steel" />
-        </div>
+        <h3 className="font-display text-[24px] leading-7 text-oxblood">{group.name}</h3>
         <p className="mt-2 flex-1 text-[15px] leading-6 text-steel">{group.use}</p>
         <p className="mt-5 flex items-center justify-between border-t border-silver-2 pt-3 text-[14px]">
           <span className="t-data !text-[14px] text-gunmetal">{n} sizes</span>
