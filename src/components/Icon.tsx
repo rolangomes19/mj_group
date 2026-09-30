@@ -1,3 +1,4 @@
+import { Anchor, Boxes, Building2, Calculator, Car, Cog, Droplets, Fan, Flame, ListChecks, PhoneCall, Truck, Warehouse, type LucideIcon } from 'lucide-react'
 const raw = import.meta.glob('../assets/icons/*.svg', { eager: true, import: 'default', query: '?raw' }) as Record<string, string>
 const icons: Record<string, string> = Object.fromEntries(
   Object.entries(raw).map(([path, svg]) => [
@@ -7,10 +8,19 @@ const icons: Record<string, string> = Object.fromEntries(
   ]),
 )
 
+// UI glyphs until drawn icons arrive. A file in assets/icons wins.
+const glyphs: Record<string, LucideIcon> = {
+  'step-pick': ListChecks, 'step-quantity': Calculator, 'step-deliver': Truck, 'step-reply': PhoneCall,
+  'ind-oilgas': Flame, 'ind-water': Droplets, 'ind-construction': Building2, 'ind-peb': Warehouse, 'ind-machinery': Cog,
+  'ind-marine': Anchor, 'ind-autobody': Car, 'ind-hvac': Fan, 'ind-other': Boxes,
+}
+
 /** Icon slot: src/assets/icons/<name>.svg, else a labelled outline square. */
 export function Icon({ name, size = 40, className = '' }: { name: string; size?: number; className?: string }) {
   const svg = icons[name]
   if (svg) return <span aria-hidden className={`inline-block shrink-0 ${className}`} style={{ width: size, height: size }} dangerouslySetInnerHTML={{ __html: svg }} />
+  const Glyph = glyphs[name]
+  if (Glyph) return <Glyph aria-hidden size={size} strokeWidth={1.5} className={`shrink-0 ${className}`} />
   const letters = name.replace(/^(group|step|proof|ind|fam)-/, '').slice(0, 2).toUpperCase()
   return (
     <span

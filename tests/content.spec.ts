@@ -56,3 +56,9 @@ test('certificate badges', async ({ page }) => {
   await page.locator('main article').filter({ hasText: 'In-Country' }).first().scrollIntoViewIfNeeded()
   await page.screenshot({ path: 'shots/tasks/06-certs.png' })
 })
+
+test('no letter chips in steps and industries', async ({ page }) => {
+  await page.goto('/')
+  await page.waitForLoadState('networkidle')
+  await expect(page.locator('main [title^="step-"], main [title^="ind-"]')).toHaveCount(0)
+})
