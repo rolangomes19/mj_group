@@ -14,30 +14,23 @@ import { Section } from '../components/Section'
 import { t } from '../copy/en'
 import { groups } from '../data/groups'
 import { industries } from '../data/industries'
-import { rowById, rowLabel, rows } from '../data/rows'
+import { rows } from '../data/rows'
 import { searchRows } from '../data/search'
-import { formatKg, lineWeightKg } from '../data/weight'
 
 const heroGlow = {
   background: 'radial-gradient(60% 50% at 50% 100%, rgba(240,138,60,.55), rgba(192,40,27,.35) 40%, transparent 70%)',
 }
 const brushed = { backgroundImage: 'repeating-linear-gradient(90deg, rgba(255,255,255,.035) 0 1px, transparent 1px 3px)' }
 
-// Three real rows for the quote slip in the hero.
-const slip = [
-  { id: 'shs-100-x-100-5_0', qty: 24, length: 6 },
-  { id: 'pipe-en10255-50-nb-3_6', qty: 60, length: 6 },
-  { id: 'ipe-200', qty: 12, length: 12 },
-].map((s) => {
-  const row = rowById(s.id)!
-  return { ...s, row, kg: lineWeightKg({ qty: s.qty, unit: 'pcs', length: s.length }, row) }
-})
-
 function Hero() {
   const stats = t.proof.map((p) => (p.value === 'SIZES' ? { ...p, value: String(rows.length) } : p))
   return (
     <section className="on-dark relative isolate overflow-hidden bg-forge text-cream">
       <div aria-hidden className="absolute inset-0" style={heroGlow} />
+      <div aria-hidden className="pointer-events-none absolute bottom-[90px] end-[-8%] w-[62%]">
+        <ProductIcon name="ipe" size="xl" className="pi-dark pi-lit !w-full" />
+      </div>
+      <div aria-hidden className="absolute inset-0 bg-[linear-gradient(90deg,#1a1210_18%,rgb(26_18_16_/_.55)_48%,transparent_75%)]" />
       <div aria-hidden className="absolute inset-0" style={brushed} />
       <div aria-hidden className="grain absolute inset-0 opacity-[.06]" />
 
@@ -65,17 +58,6 @@ function Hero() {
           </div>
         </div>
 
-        <div className="col-span-5 flex items-center justify-end">
-          <div className="relative w-[520px] pb-28">
-            <div className="heat-top relative w-[440px] border border-silver-2 bg-cream-2">
-              <ProductIcon name="ipe" size="xl" label="overlay" className="!w-full" />
-            </div>
-            <div className="absolute bottom-0 end-0">
-              <QuoteSlip />
-            </div>
-          </div>
-        </div>
-
         <dl className="col-span-12 mt-20 grid grid-cols-5 border-t border-cream/15">
           {stats.map((s, i) => (
             <div key={s.label} className={`flex flex-col py-7 ${i ? 'border-s border-cream/15 ps-8' : ''}`}>
@@ -89,37 +71,6 @@ function Hero() {
       </div>
       <HeatRule className="relative" />
     </section>
-  )
-}
-
-/** The product in one glance: three rows becoming a quote. */
-function QuoteSlip() {
-  const total = slip.reduce((s, l) => s + l.kg, 0)
-  return (
-    <div className="hero-in relative w-[400px] -rotate-[1.5deg] border border-cream/15 bg-cream text-gunmetal shadow-[0_40px_80px_-30px_rgb(0_0_0_/_.8)]" style={{ animationDelay: '420ms' }}>
-      <div className="heat-rule-light" />
-      <div className="flex items-baseline justify-between px-6 pb-3 pt-5">
-        <span className="font-display text-[24px] text-oxblood">Your quote</span>
-        <span className="t-data !text-[13px] text-steel">3 lines</span>
-      </div>
-      <ul className="border-t border-silver-2">
-        {slip.map((l) => (
-          <li key={l.id} className="flex items-baseline justify-between gap-3 border-b border-silver-2 px-6 py-3 shadow-[inset_3px_0_0_var(--color-ember)]">
-            <Link to={rowHref(l.row)} className="t-data text-oxblood hover:underline">
-              {rowLabel(l.row)}
-            </Link>
-            <span className="t-data !text-[13px] text-steel">
-              {l.qty} x {l.length} m
-            </span>
-          </li>
-        ))}
-      </ul>
-      <div className="flex items-baseline justify-between px-6 py-4">
-        <span className="text-[13px] text-steel">Theoretical weight</span>
-        <span className="t-data !text-[18px] text-oxblood">{formatKg(total)} kg</span>
-      </div>
-      <div className="bg-cream-2 px-6 py-3 text-[13px] text-steel">Priced and back to you in 2 hours.</div>
-    </div>
   )
 }
 
@@ -254,7 +205,6 @@ export function Home() {
   return (
     <>
       <Hero />
-      <FounderBand />
       <ShapeSelector />
       <Section title={t.drawn.title} intro={t.drawn.intro} className="bg-cream-2">
         <div className="grid grid-cols-12 items-center gap-8">
@@ -275,6 +225,7 @@ export function Home() {
       <Section title={t.certs.title} intro={t.certs.intro}>
         <CertBand />
       </Section>
+      <FounderBand />
       <Industries />
       <CtaBand />
     </>

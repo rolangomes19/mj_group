@@ -219,6 +219,15 @@
   .sd, .sd-fade { animation: none !important; }
 }
 
+/* Dark variant for forge grounds. .pi-lit keeps the hot layer on (steel still glowing from the cut face). */
+.pi-dark .f-front { fill: #5b6168; }
+.pi-dark .f-long { fill: #3a3f44; stroke: #3a3f44; }
+.pi-dark .f-deep { fill: #2b2f33; stroke: #2b2f33; }
+.pi-dark .f-shadow { fill: #0f0a08; }
+.pi-dark .f-bore { fill: #2b2f33; }
+.pi-dark .f-line { stroke: #9aa1a8; }
+.pi-lit .hot { opacity: 1; }
+
 /* Native dialog drawer: slide from right, 300ms. */
 dialog.drawer {
   margin: 0 0 0 auto;
