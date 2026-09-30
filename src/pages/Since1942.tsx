@@ -92,7 +92,7 @@ function Entry({ e, left, anchor }: { e: TimelineEntry; left: boolean; anchor?: 
     <li id={anchor} className="relative grid grid-cols-2 gap-16 pb-16 [&:not(:first-of-type)]:-mt-32 scroll-mt-[calc(var(--header-h)+32px)]">
       <span aria-hidden className="absolute start-1/2 top-3 h-4 w-4 -translate-x-1/2 rotate-45 border-2 border-oxblood bg-cream" />
       <article className={`reveal heat-top border border-silver-2 bg-cream-2 ${left ? 'col-start-1' : 'col-start-2'}`}>
-        {e.slot && <Placeholder slot={e.slot} />}
+        {e.slot && <Placeholder slot={e.slot} tone="heat" />}
         <div className="p-7">
           <div className="flex items-baseline justify-between gap-4">
             <p className="t-data !text-[40px] !leading-[44px] text-oxblood">{e.year}</p>

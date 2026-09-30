@@ -59,7 +59,7 @@ export default function Tokens() {
       <section className="grid grid-cols-3 gap-6">
         <Placeholder slot="founder-band" />
         <Placeholder slot="hero-yard" />
-        <Placeholder slot="tile-pipes" tone="heat" />
+        <Placeholder slot="industry-oilgas" tone="heat" />
       </section>
     </div>
   )

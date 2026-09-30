@@ -35,22 +35,19 @@ Every empty slot shows its name, ratio and minimum size. The full list is in `sr
 | Slot | Where | Ratio | Min size |
 | --- | --- | --- | --- |
 | hero-yard | Home hero | 16:9 | 2400 w |
-| tile-pipes, tile-structural, tile-channels, tile-angles, tile-flat-long, tile-plate-sheet, tile-wire, tile-grating-mesh | Group tiles | 4:3 | 1200 w |
 | industry-oilgas, -water, -construction, -peb, -machinery, -marine | Home industries | 3:2 | 1200 w |
 | founder-portrait, founder-band | Founder hero, Home founder band | 3:4, 4:5 | 1800 h, 1200 w |
-| founder-archive-1 to 3, founder-book | Founder page | 3:2, 4:5, 3:4 | 1400 w |
+| founder-archive-1, -2, founder-book | Founder page | 3:2, 4:5, 3:4 | 1400 w |
 | proof-mtc, proof-stencil, proof-bundle | Family pages | 4:5 crop | 900 w |
 | cta-yard | CTA bands | 21:9 | 2400 w |
-| timeline-1 to 6 | Since 1942 | 4:3 | 1000 w |
+| timeline-1, -2, -4, -6 | Since 1942 | 4:3 | 1000 w |
 
 `founder-portrait.jpg` and `founder-band.jpg` are the family portrait (`MP-bw.jpg`). Photos not to use: the ruler image, Gulf News and magazine press photos.
 
 ## Swap in icons
 
-Drop a single-colour SVG into `src/assets/icons/` named from the list below. Fill and stroke colours are replaced with `currentColor`, so the icon takes the text colour. Draw on a 48 px grid, 1.5 px stroke, sharp joins. A missing icon shows an outlined square with two letters.
+Product drawings (17 families) are generated: `npm run icons` writes `src/assets/product-icons/` and `scripts/area-report.md`. Step and industry glyphs use lucide-react. To override any UI glyph, drop a single-colour SVG into `src/assets/icons/` named from the list below. Fill and stroke colours are replaced with `currentColor`, so the icon takes the text colour. Draw on a 48 px grid, 1.5 px stroke, sharp joins. A missing icon shows an outlined square with two letters.
 
-- Groups: group-pipes, group-structural, group-channels, group-angles, group-flat-long, group-plate-sheet, group-wire, group-grating-mesh
-- Families: fam-<family id>, for example fam-shs, fam-ipe, fam-pipe-en10255
 - Quote steps: step-pick, step-quantity, step-deliver, step-reply
 - Industries: ind-oilgas, ind-water, ind-construction, ind-peb, ind-machinery, ind-marine, ind-autobody, ind-hvac, ind-other
 

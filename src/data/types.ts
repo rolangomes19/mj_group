@@ -7,8 +7,6 @@ export type Group = {
   id: string
   name: string
   use: string
-  icon: string
-  photo: string
   /** Family whose drawing leads the group tile. */
   lead: string
 }

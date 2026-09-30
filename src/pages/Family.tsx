@@ -244,7 +244,7 @@ function FamilyView({ family, groupName }: { family: FamilyT; groupName: string 
                 {(['proof-mtc', 'proof-stencil', 'proof-bundle'] as const).map((slot, i) => (
                   <figure key={slot} className="reveal">
                     <div className="aspect-[4/5] relative overflow-hidden border border-silver-2">
-                      <Placeholder slot={slot} fill />
+                      <Placeholder slot={slot} fill tone="heat" />
                     </div>
                     <figcaption className="mt-3 text-[15px] text-gunmetal">{t.family.proofCaptions[i]}</figcaption>
                   </figure>
