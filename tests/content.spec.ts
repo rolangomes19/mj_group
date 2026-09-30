@@ -76,3 +76,18 @@ test('product icons and hot state', async ({ page }) => {
   await page.screenshot({ path: 'shots/tasks/07-tiles-hot.png' })
   await expect(page.locator('main')).not.toContainText(/tile-pipes|hero-yard/)
 })
+
+test('section drawing draws on scroll', async ({ page }) => {
+  await page.goto('/')
+  await page.waitForLoadState('networkidle')
+  const line = page.locator('.sd').first()
+  const off = () => line.evaluate((e) => getComputedStyle(e).strokeDashoffset)
+  expect(parseFloat(await off())).toBeGreaterThan(0.9)
+  await line.scrollIntoViewIfNeeded()
+  await page.mouse.wheel(0, 200)
+  await page.waitForTimeout(600)
+  await expect.poll(async () => parseFloat(await off())).toBeLessThan(0.05)
+  await page.locator('svg[aria-label^="IPE 200 section"]').first().scrollIntoViewIfNeeded()
+  await page.waitForTimeout(400)
+  await page.screenshot({ path: 'shots/tasks/07-drawing.png' })
+})

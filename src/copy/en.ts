@@ -31,6 +31,18 @@ export const t = {
     { value: '81', label: 'Project approvals', count: true },
     { value: '2 hr', label: 'Quote reply', count: false },
   ],
+  drawn: {
+    title: 'Every section, drawn to size',
+    intro: 'IPE 200 as the catalogue lists it. Each icon in the range is drawn from its own row.',
+    rows: [
+      ['Depth', '200 mm'],
+      ['Width', '100 mm'],
+      ['Web', '5.6 mm'],
+      ['Flange', '8.5 mm'],
+      ['Root radius', '12 mm'],
+      ['Mass', '22.4 kg/m'],
+    ] as [string, string][],
+  },
   shape: {
     title: 'Start from the shape',
     know: 'I know what I need',

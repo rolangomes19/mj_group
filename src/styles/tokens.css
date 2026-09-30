@@ -207,6 +207,18 @@
   transition-duration: 250ms;
 }
 
+/* Section drawing: lines draw as the band scrolls in. Fully drawn where scroll timelines are unsupported. */
+@keyframes sd-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes sd-fade { from { opacity: 0; } to { opacity: 1; } }
+.sd { stroke-dasharray: 1; stroke-dashoffset: 0; }
+@supports (animation-timeline: view()) {
+  .sd { animation: sd-draw linear both; animation-timeline: view(); animation-range: entry 10% cover 45%; }
+  .sd-fade { animation: sd-fade linear both; animation-timeline: view(); animation-range: cover 30% cover 50%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sd, .sd-fade { animation: none !important; }
+}
+
 /* Native dialog drawer: slide from right, 300ms. */
 dialog.drawer {
   margin: 0 0 0 auto;

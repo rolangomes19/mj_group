@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { Link } from 'react-router'
 import { HeatRule } from '../components/HeatRule'
 import { Placeholder } from '../components/Placeholder'
+import { SectionDrawing } from '../components/SectionDrawing'
 import { SampleChip } from '../components/SampleChip'
 import { timeline } from '../data/timeline'
 import type { TimelineEntry } from '../data/types'
@@ -71,6 +72,9 @@ export default function Since1942() {
               <Entry key={e.year + e.title} e={e} left={i % 2 === 0} anchor={i === 0 || decade(list[i - 1].year) !== decade(e.year) ? `d${decade(e.year)}` : undefined} />
             ))}
           </ol>
+          <div className="col-span-10 col-start-3 mx-auto w-40 pt-4">
+            <SectionDrawing compact />
+          </div>
         </div>
       </section>
       <div className="wrap pb-16 text-center">

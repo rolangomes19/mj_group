@@ -8,6 +8,7 @@ import { HeatRule } from '../components/HeatRule'
 import { Icon } from '../components/Icon'
 import { Placeholder } from '../components/Placeholder'
 import { ProductIcon } from '../components/ProductIcon'
+import { SectionDrawing } from '../components/SectionDrawing'
 import { SearchBox, rowHref } from '../components/SearchBox'
 import { Section } from '../components/Section'
 import { t } from '../copy/en'
@@ -255,6 +256,21 @@ export function Home() {
       <Hero />
       <FounderBand />
       <ShapeSelector />
+      <Section title={t.drawn.title} intro={t.drawn.intro} className="bg-cream-2">
+        <div className="grid grid-cols-12 items-center gap-8">
+          <div className="col-span-7">
+            <SectionDrawing />
+          </div>
+          <dl className="col-span-4 col-start-9 border-t-2 border-oxblood">
+            {t.drawn.rows.map(([k, v]) => (
+              <div key={k} className="flex items-baseline justify-between gap-6 border-b border-silver-2 py-3">
+                <dt className="text-[14px] text-steel">{k}</dt>
+                <dd className="t-data !text-[14px] text-gunmetal">{v}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </Section>
       <Steps />
       <Section title={t.certs.title} intro={t.certs.intro}>
         <CertBand />
