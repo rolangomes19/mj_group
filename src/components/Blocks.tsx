@@ -7,6 +7,7 @@ import { approvals, certificates, gradeTable } from '../data/standards'
 import type { Group } from '../data/types'
 import { useDemo } from '../state/demo'
 import { Button, ButtonLink } from './Button'
+import { Cert204Label } from './Cert204Label'
 import { HeatRule } from './HeatRule'
 import { Icon } from './Icon'
 import { Placeholder } from './Placeholder'
@@ -123,6 +124,9 @@ export function CertBand() {
     <div className="grid grid-cols-12 gap-8">
       {certificates.map((c) => (
         <article key={c.title} className="heat-top col-span-4 flex flex-col border border-silver-2 bg-cream-2 p-8">
+          <div className="mb-6 flex h-24 items-center">
+            {c.badge.src ? <img src={c.badge.src} alt={c.badge.alt} style={{ height: c.badge.h }} className="w-auto object-contain object-left" /> : <Cert204Label size={c.badge.h} />}
+          </div>
           <h3 className="t-h3">
             {c.title}
             <SampleChip sample={c.sample} />
@@ -133,8 +137,12 @@ export function CertBand() {
             <dd className="text-gunmetal">{c.issuer}</dd>
             <dt className="text-steel">{t.certs.number}</dt>
             <dd className="t-data !text-[14px] text-gunmetal">{c.number}</dd>
-            <dt className="text-steel">{t.certs.valid}</dt>
-            <dd className="t-data !text-[14px] text-gunmetal">{c.validTo}</dd>
+            {c.validTo && (
+              <>
+                <dt className="text-steel">{t.certs.valid}</dt>
+                <dd className="t-data !text-[14px] text-gunmetal">{c.validTo}</dd>
+              </>
+            )}
           </dl>
         </article>
       ))}

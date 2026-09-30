@@ -1,4 +1,6 @@
 import type { StandardKey } from './types'
+import icvLogo from '../assets/certs/icv-logo.png'
+import isoSeal from '../assets/certs/wrg-iso9001-seal.png'
 
 export const standardChips: { key: StandardKey; label: string }[] = [
   { key: 'EN10219', label: 'EN 10219' },
@@ -22,10 +24,21 @@ export const gradeTable = [
   { en: 'S355J2W', astm: 'A588 Gr A', jis: 'SMA490AW', yield: 355 },
 ]
 
-export const certificates = [
-  { title: 'ISO 9001:2015', body: 'Quality management system for steel trading and stockholding.', issuer: 'WRG Certifications', number: 'QMS-MMXXIV-10-15184', validTo: 'Nov 2027', sample: false },
-  { title: 'In-Country Value certificate', body: 'Certified local value for UAE government and major project tenders.', issuer: 'Mazars', number: 'ICV-132761', validTo: 'May 2027', sample: true },
-  { title: 'EN 10204 3.1 mill test certificates', body: 'Chemistry and mechanical results, traceable by heat number, with every order.', issuer: 'Issued by the producing mill', number: 'Per heat', validTo: 'Every delivery', sample: false },
+// badge.src null: drawn in code (Cert204Label). Marks are third-party, shown at 96 px high at most.
+export type Badge = { src: string | null; alt: string; h: number }
+
+export const certificates: {
+  title: string
+  body: string
+  issuer: string
+  number: string
+  validTo?: string
+  sample: boolean
+  badge: Badge
+}[] = [
+  { title: 'ISO 9001:2015', body: 'Quality management system for steel trading and stockholding, certified by WRG Certifications.', issuer: 'WRG Certifications', number: 'QMS-MMXXIV-10-15184', validTo: 'Nov 2027', sample: false, badge: { src: isoSeal, alt: 'WRG Certifications ISO 9001 registered seal', h: 96 } },
+  { title: 'In-Country Value certificate', body: 'Certified local value for UAE government and major project tenders.', issuer: 'Mazars', number: 'ICV-132761', sample: true, badge: { src: icvLogo, alt: 'In-Country Value programme logo', h: 88 } },
+  { title: 'EN 10204 3.1 mill test certificates', body: 'Chemistry and mechanical results, traceable by heat number, with every order.', issuer: 'Issued by the producing mill', number: 'Per heat', validTo: 'Every delivery', sample: false, badge: { src: null, alt: 'EN 10204 3.1 label', h: 96 } },
 ]
 
 export const approvals = {

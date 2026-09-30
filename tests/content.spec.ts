@@ -43,3 +43,16 @@ test('home hero and order', async ({ page }) => {
   await page.waitForTimeout(800)
   await page.screenshot({ path: 'shots/tasks/05-hero.png' })
 })
+
+test('certificate badges', async ({ page }) => {
+  for (const path of ['/', '/standards']) {
+    const body = await text(page, path)
+    expect(body).not.toMatch(/May 2027/)
+    const badges = page.locator('main article').filter({ hasText: /ISO 9001|In-Country|EN 10204/ })
+    await expect(badges.locator('img[alt*="seal"], img[alt*="logo"], svg[aria-label="EN 10204 3.1 label"]')).toHaveCount(3)
+    for (const b of await badges.locator('img, svg[role="img"]').all()) expect((await b.boundingBox())!.height).toBeLessThanOrEqual(96)
+  }
+  await page.goto('/standards')
+  await page.locator('main article').filter({ hasText: 'In-Country' }).first().scrollIntoViewIfNeeded()
+  await page.screenshot({ path: 'shots/tasks/06-certs.png' })
+})
