@@ -23,7 +23,7 @@ export default function Founder() {
         <div aria-hidden className="grain absolute inset-0 opacity-[.06]" />
         <div className="wrap relative flex min-h-[720px] flex-col justify-end pb-24 pt-28">
           <p className="hero-in font-mono text-[14px] text-molten">{t.founderBand.label}</p>
-          <h1 className="t-display hero-in mt-6 max-w-[11ch] !text-[80px] !leading-[80px] text-cream" style={{ animationDelay: '80ms' }}>
+          <h1 className="t-display hero-in mt-6 max-w-[14ch] text-cream" style={{ animationDelay: '80ms' }}>
             {founder.name}
           </h1>
           <p className="t-data hero-in mt-6 !text-[22px] text-silver" style={{ animationDelay: '160ms' }}>
@@ -72,7 +72,7 @@ export default function Founder() {
       <section className="on-dark relative overflow-hidden bg-oxblood py-32 text-cream">
         <div aria-hidden className="absolute inset-0" style={{ background: 'radial-gradient(60% 80% at 50% 120%, rgba(240,138,60,.35), transparent 70%)' }} />
         <div className="wrap relative text-center">
-          <p className="mx-auto max-w-[16ch] font-display text-[96px] font-semibold leading-[96px] tracking-[-0.02em] [text-wrap:balance]">{founder.values}</p>
+          <p className="mx-auto max-w-[20ch] font-display text-[60px] leading-[66px] [text-wrap:balance]">{founder.values}</p>
           <HeatRule animate className="mx-auto mt-10 w-40" />
           <p className="mt-6 text-[18px] text-cream/80">{founder.valuesNote}</p>
         </div>

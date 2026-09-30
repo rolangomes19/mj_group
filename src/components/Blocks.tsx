@@ -22,7 +22,7 @@ export function GroupTile({ group }: { group: Group }) {
       <Placeholder slot={group.photo} tone="heat" />
       <div className="flex flex-1 flex-col p-6">
         <div className="flex items-start justify-between gap-3">
-          <h3 className="font-display text-[24px] font-medium leading-7 text-oxblood">{group.name}</h3>
+          <h3 className="font-display text-[24px] leading-7 text-oxblood">{group.name}</h3>
           <Icon name={group.icon} size={32} className="text-steel" />
         </div>
         <p className="mt-2 flex-1 text-[15px] leading-6 text-steel">{group.use}</p>
@@ -140,7 +140,7 @@ export function CertBand() {
       ))}
       <div className="col-span-12 mt-4 overflow-hidden border-y border-silver-2 py-6">
         <div className="flex items-center gap-10">
-          <p className="shrink-0 font-display text-[22px] font-medium text-oxblood">
+          <p className="shrink-0 font-display text-[24px] text-oxblood">
             <span className="t-data !text-[22px] text-ember">{approvals.total}</span> project approvals
           </p>
           <div className="relative flex-1 overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)]">

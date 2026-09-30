@@ -94,7 +94,7 @@ function QuoteSlip() {
     <div className="hero-in relative w-[400px] -rotate-[1.5deg] border border-cream/15 bg-cream text-gunmetal shadow-[0_40px_80px_-30px_rgb(0_0_0_/_.8)]" style={{ animationDelay: '420ms' }}>
       <div className="heat-rule-light" />
       <div className="flex items-baseline justify-between px-6 pb-3 pt-5">
-        <span className="font-display text-[22px] font-medium text-oxblood">Your quote</span>
+        <span className="font-display text-[24px] text-oxblood">Your quote</span>
         <span className="t-data !text-[13px] text-steel">3 lines</span>
       </div>
       <ul className="border-t border-silver-2">
@@ -191,7 +191,7 @@ function FounderBand() {
         </div>
         <div className="col-span-7 col-start-6 py-24">
           <p className="font-mono text-[14px] text-molten">{t.founderBand.label}</p>
-          <blockquote className="mt-6 font-display text-[64px] font-semibold leading-[68px] tracking-[-0.015em] text-cream">{t.founderBand.line}</blockquote>
+          <blockquote className="mt-6 font-display text-[60px] leading-[66px] text-cream">{t.founderBand.line}</blockquote>
           <p className="mt-6 max-w-[48ch] text-[18px] text-cream/80">{t.founderBand.note}</p>
           <Link to="/founder" className="mt-10 inline-flex items-center gap-2 border-b border-molten pb-1 text-[17px] font-semibold text-molten hover:gap-3 transition-[gap]">
             {t.founderBand.link} <ArrowRight size={18} aria-hidden />
@@ -233,7 +233,7 @@ function Industries() {
               <div className="flex items-start gap-4 p-6">
                 <Icon name={ind.icon} size={32} className="mt-1 text-steel" />
                 <div>
-                  <h3 className="font-display text-[22px] font-medium leading-7 text-oxblood">{ind.name}</h3>
+                  <h3 className="font-display text-[24px] leading-7 text-oxblood">{ind.name}</h3>
                   <p className="mt-1.5 text-[15px] leading-6 text-steel">{ind.line}</p>
                 </div>
               </div>

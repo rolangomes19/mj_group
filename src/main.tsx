@@ -1,5 +1,4 @@
-import '@fontsource/saira-semi-condensed/500.css'
-import '@fontsource/saira-semi-condensed/600.css'
+import '@fontsource/faculty-glyphic/400.css'
 import '@fontsource/ibm-plex-sans/400.css'
 import '@fontsource/ibm-plex-sans/600.css'
 import '@fontsource/ibm-plex-mono/400.css'
