@@ -48,13 +48,18 @@ function Hero() {
           <div className="hero-in relative z-20 mt-10 max-w-[600px]" style={{ animationDelay: '240ms' }}>
             <SearchBox size="lg" dark />
           </div>
-          <div className="hero-in mt-6 flex gap-3" style={{ animationDelay: '300ms' }}>
-            <ButtonLink to="/catalogue" size="lg">
-              {t.hero.browse}
-            </ButtonLink>
-            <ButtonLink to="/quote" variant="dark" size="lg">
-              {t.hero.start}
-            </ButtonLink>
+          <div className="hero-in mt-6 flex items-center gap-6" style={{ animationDelay: '300ms' }}>
+            <div className="flex gap-3">
+              <ButtonLink to="/catalogue" size="lg">
+                {t.hero.browse}
+              </ButtonLink>
+              <ButtonLink to="/quote" variant="dark" size="lg">
+                {t.hero.start}
+              </ButtonLink>
+            </div>
+            <Link to="/founder" className="inline-flex items-center gap-2 border-b border-molten pb-1 text-[15px] font-semibold text-molten hover:gap-3 transition-[gap]">
+              {t.founderBand.link} <ArrowRight size={16} aria-hidden />
+            </Link>
           </div>
         </div>
 
@@ -62,7 +67,7 @@ function Hero() {
           {stats.map((s, i) => (
             <div key={s.label} className={`flex flex-col py-7 ${i ? 'border-s border-cream/15 ps-8' : ''}`}>
               <dt className="order-2 mt-1 text-[14px] text-silver">{s.label}</dt>
-              <dd className="t-data order-1 !text-[40px] !leading-[44px] text-cream">
+              <dd className={`t-data order-1 text-cream ${i === 0 ? '!text-[56px] !leading-[58px] text-molten' : '!text-[40px] !leading-[44px]'}`}>
                 {s.count ? <CountUp to={Number(s.value)} /> : s.value}
               </dd>
             </div>

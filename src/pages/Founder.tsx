@@ -56,7 +56,7 @@ export default function Founder() {
           <ol className="col-span-7 divide-y divide-silver-2 border-y border-silver-2">
             {founder.civic.map((c) => (
               <li key={c.title} className="reveal grid grid-cols-[150px_1fr] gap-8 py-8">
-                <p className="t-data !text-[44px] !leading-[48px] text-copper">{c.year}</p>
+                <p className={`t-data text-copper ${/^\d+$/.test(c.year) ? '!text-[44px] !leading-[48px]' : '!text-[20px] !leading-[48px]'}`}>{c.year}</p>
                 <div>
                   <h3 className="t-h3">{c.title}</h3>
                   <p className="mt-3 max-w-[46ch] text-[18px] leading-[29px] text-steel">{c.body}</p>
@@ -66,20 +66,6 @@ export default function Founder() {
           </ol>
           <div className="col-span-4 col-start-9">
             <Placeholder slot="founder-archive-2" position="60% 40%" alt="Maghanmal Jethanand Pancholia at his desk" />
-          </div>
-        </div>
-      </Section>
-
-      {/* 4. School and club */}
-      <Section title="A school and a club">
-        <div className="grid grid-cols-12 items-center gap-10">
-          <div className="col-span-6">
-            <Placeholder slot="founder-archive-3" alt="Maghanmal Jethanand Pancholia holding a photograph of The Indian High School" />
-          </div>
-          <div className="col-span-5 col-start-8 space-y-5 text-[19px] leading-[31px]">
-            {founder.community.map((p) => (
-              <p key={p} className="measure">{p}</p>
-            ))}
           </div>
         </div>
       </Section>

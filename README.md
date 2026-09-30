@@ -37,10 +37,10 @@ Every empty slot shows its name, ratio and minimum size. The full list is in `sr
 | hero-yard | Home hero | 16:9 | 2400 w |
 | industry-oilgas, -water, -construction, -peb, -machinery, -marine | Home industries | 3:2 | 1200 w |
 | founder-portrait, founder-band | Founder hero, Home founder band | 3:4, 4:5 | 1800 h, 1200 w |
-| founder-archive-1, -2, -3 | Founder page and Since 1942 (timeline-1, -2, -4 reuse them) | 3:2, 4:5, 7:5 | 1400 w |
+| founder-archive-1, -2 | Founder page and Since 1942 (timeline-1, -2 reuse them) | 3:2, 4:5 | 1400 w |
 | proof-mtc, proof-stencil, proof-bundle | Family pages | 4:5 crop | 900 w |
 | cta-yard | CTA bands | 21:9 | 2400 w |
-| timeline-1, -2, -4 | Since 1942 | 4:3 | 1000 w |
+| timeline-1, -2 | Since 1942 | 4:3 | 1000 w |
 
 `founder-portrait.jpg` and `founder-band.jpg` are the family portrait (`MP-bw.jpg`). Photos not to use: the ruler image, Gulf News and magazine press photos.
 
