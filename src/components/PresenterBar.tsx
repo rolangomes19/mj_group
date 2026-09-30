@@ -58,10 +58,7 @@ export function PresenterBar() {
   const go = (i: number) => {
     const path = routes[i]
     if ((path === '/quote/details' || path === '/quote/received') && useBasket.getState().lines.length === 0) fillBasket()
-    if (path === '/quote/received') {
-      setQuote(sampleQuote())
-      useBasket.getState().clear()
-    }
+    if (path === '/quote/received') setQuote(sampleQuote())
     nav(path)
     window.scrollTo(0, 0)
   }

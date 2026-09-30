@@ -1,16 +1,20 @@
 import { CheckCircle2, MessageCircle } from 'lucide-react'
+import { useEffect } from 'react'
 import { Navigate } from 'react-router'
 import { Button, ButtonLink } from '../components/Button'
 import { SampleChip } from '../components/SampleChip'
 import { t } from '../copy/en'
 import { contact } from '../data/contact'
 import { formatKg, formatWeight } from '../data/weight'
+import { useBasket } from '../state/basket'
 import { useDemo } from '../state/demo'
 import { QuoteHeader } from './Quote'
 
 export function QuoteReceived() {
   const quote = useDemo((s) => s.quote)
   const openWhatsApp = useDemo((s) => s.openWhatsApp)
+  // Cleared here, after Details has unmounted, so its empty-basket redirect can't win a race.
+  useEffect(() => useBasket.getState().clear(), [])
   if (!quote) return <Navigate to="/quote" replace />
 
   return (
