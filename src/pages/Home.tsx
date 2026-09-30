@@ -48,18 +48,13 @@ function Hero() {
           <div className="hero-in relative z-20 mt-10 max-w-[600px]" style={{ animationDelay: '240ms' }}>
             <SearchBox size="lg" dark />
           </div>
-          <div className="hero-in mt-6 flex items-center gap-6" style={{ animationDelay: '300ms' }}>
-            <div className="flex gap-3">
-              <ButtonLink to="/catalogue" size="lg">
-                {t.hero.browse}
-              </ButtonLink>
-              <ButtonLink to="/quote" variant="dark" size="lg">
-                {t.hero.start}
-              </ButtonLink>
-            </div>
-            <Link to="/founder" className="inline-flex items-center gap-2 border-b border-molten pb-1 text-[15px] font-semibold text-molten hover:gap-3 transition-[gap]">
-              {t.founderBand.link} <ArrowRight size={16} aria-hidden />
-            </Link>
+          <div className="hero-in mt-6 flex gap-3" style={{ animationDelay: '300ms' }}>
+            <ButtonLink to="/catalogue" size="lg">
+              {t.hero.browse}
+            </ButtonLink>
+            <ButtonLink to="/quote" variant="dark" size="lg">
+              {t.hero.start}
+            </ButtonLink>
           </div>
         </div>
 
