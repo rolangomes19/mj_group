@@ -1,4 +1,4 @@
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, FileSpreadsheet } from 'lucide-react'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router'
 import { CertBand, CtaBand, GroupTile } from '../components/Blocks'
@@ -6,7 +6,9 @@ import { ButtonLink } from '../components/Button'
 import { CountUp } from '../components/CountUp'
 import { HeatRule } from '../components/HeatRule'
 import { Icon } from '../components/Icon'
+import { PlateTexture } from '../components/PlateTexture'
 import { Placeholder } from '../components/Placeholder'
+import emberPortrait from '../assets/images/maghaba-ember.png'
 import { ProductIcon } from '../components/ProductIcon'
 import { SectionDrawing } from '../components/SectionDrawing'
 import { SearchBox, rowHref } from '../components/SearchBox'
@@ -15,6 +17,7 @@ import { t } from '../copy/en'
 import { groups } from '../data/groups'
 import { industries } from '../data/industries'
 import { rows } from '../data/rows'
+import { importList, type ImportResult } from '../data/importList'
 import { searchRows } from '../data/search'
 
 const heroGlow = {
@@ -32,6 +35,7 @@ function Hero() {
       </div>
       <div aria-hidden className="absolute inset-0 bg-[linear-gradient(90deg,#1a1210_18%,rgb(26_18_16_/_.55)_48%,transparent_75%)]" />
       <div aria-hidden className="absolute inset-0" style={brushed} />
+      <PlateTexture at="72% 100%" rx="55%" ry="85%" className="inset-x-0 bottom-0 h-[58%]" />
       <div aria-hidden className="grain absolute inset-0 opacity-[.06]" />
 
       <div className="wrap relative grid min-h-[760px] grid-cols-12 gap-x-8 pb-0 pt-24">
@@ -74,6 +78,56 @@ function Hero() {
   )
 }
 
+function ListUpload() {
+  const [res, setRes] = useState<ImportResult | null>(null)
+  const [busy, setBusy] = useState(false)
+  const run = async (f?: File) => {
+    if (!f) return
+    setBusy(true)
+    try {
+      setRes(await importList(f))
+    } catch {
+      setRes({ added: 0, missed: [f.name] })
+    }
+    setBusy(false)
+  }
+  return (
+    <div className="mt-8 border-t border-silver-2 pt-8">
+      <label
+        className="flex cursor-pointer items-center gap-5 border border-dashed border-steel/60 bg-cream p-6 transition-colors hover:border-ember focus-within:border-ember"
+        onDragOver={(e) => e.preventDefault()}
+        onDrop={(e) => {
+          e.preventDefault()
+          run(e.dataTransfer.files[0])
+        }}
+      >
+        <FileSpreadsheet size={32} className="shrink-0 text-ember" aria-hidden />
+        <span className="flex flex-col gap-1">
+          <span className="font-semibold text-gunmetal">{busy ? t.shape.reading : t.shape.upload}</span>
+          <span className="text-[14px] text-steel">{t.shape.uploadHelp}</span>
+        </span>
+        <input type="file" accept=".csv,.xlsx" className="sr-only" onChange={(e) => run(e.target.files?.[0])} />
+      </label>
+      <a
+        href={`data:text/csv;charset=utf-8,${encodeURIComponent(t.shape.template)}`}
+        download="mj-quote-template.csv"
+        className="mt-3 inline-block text-[14px] font-semibold text-oxblood underline underline-offset-4 hover:text-ember"
+      >
+        {t.shape.templateLink}
+      </a>
+      {res && (
+        <div role="status" className="mt-5 flex items-center justify-between gap-6 border border-silver-2 bg-cream p-5">
+          <p className="text-[15px] text-gunmetal">
+            <span className="font-semibold">{res.added} lines added to your quote.</span>
+            {res.missed.length > 0 && <span className="text-steel"> Not matched: {res.missed.slice(0, 4).join(', ')}{res.missed.length > 4 ? '…' : ''}. We will check these by hand.</span>}
+          </p>
+          <ButtonLink to="/quote">{t.drawer.review}</ButtonLink>
+        </div>
+      )}
+    </div>
+  )
+}
+
 function ShapeSelector() {
   const [tab, setTab] = useState<'know' | 'browse'>('browse')
   const nav = useNavigate()
@@ -112,6 +166,7 @@ function ShapeSelector() {
           <div className="col-span-8">
             <SearchBox size="lg" autoFocus />
             <p className="mt-4 text-steel">{t.shape.knowHelp}</p>
+            <ListUpload />
           </div>
           <div className="col-span-4">
             <p className="text-[14px] text-steel">{t.shape.try}</p>
@@ -142,10 +197,10 @@ function FounderBand() {
   return (
     <section className="on-dark relative overflow-hidden text-cream" style={{ background: 'linear-gradient(100deg, #7a0000 0%, #3a0a06 45%, #1a1210 100%)' }}>
       <div className="wrap grid grid-cols-12 items-center gap-8">
-        <div className="col-span-4 -my-px">
-          <Placeholder slot="founder-band" tone="heat" alt="Maghanmal Jethanand Pancholia" position="50% 20%" />
+        <div className="col-span-5 self-end">
+          <img src={emberPortrait} alt="Maghanmal Jethanand Pancholia" className="block w-full" />
         </div>
-        <div className="col-span-7 col-start-6 py-24">
+        <div className="col-span-6 col-start-7 py-24">
           <p className="font-mono text-[14px] text-molten">{t.founderBand.label}</p>
           <blockquote className="mt-6 font-display text-[60px] leading-[66px] text-cream">{t.founderBand.line}</blockquote>
           <p className="mt-6 max-w-[48ch] text-[18px] text-cream/80">{t.founderBand.note}</p>
@@ -154,6 +209,7 @@ function FounderBand() {
           </Link>
         </div>
       </div>
+      <PlateTexture at="80% 100%" rx="60%" ry="90%" className="inset-x-0 bottom-0 h-[70%]" />
     </section>
   )
 }

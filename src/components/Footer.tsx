@@ -5,6 +5,7 @@ import { contact, locations } from '../data/contact'
 import { groups } from '../data/groups'
 import { useDemo } from '../state/demo'
 import { HeatRule } from './HeatRule'
+import { PlateTexture } from './PlateTexture'
 import { Lockup } from './Logo'
 
 export function Footer() {
@@ -12,9 +13,10 @@ export function Footer() {
   return (
     <footer id="contact" className="on-dark relative bg-forge text-cream">
       <HeatRule />
+      <PlateTexture at="88% 0%" rx="60%" ry="100%" className="inset-x-0 top-0 h-[300px]" />
       <div className="wrap grid grid-cols-12 gap-x-8 gap-y-14 pb-10 pt-20">
         <div className="col-span-12 flex items-end justify-between gap-8 border-b border-cream/10 pb-14">
-          <Lockup height={64} nameClass="text-[44px] text-cream" className="text-cream" />
+          <Lockup height={54} nameClass="text-[24px] text-cream" className="text-cream" />
           <p className="max-w-[34ch] text-end text-silver">{contact.replyPromise}</p>
         </div>
 

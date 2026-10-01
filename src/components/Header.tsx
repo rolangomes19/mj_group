@@ -46,7 +46,7 @@ export function Header() {
     <header className="sticky top-0 z-40 h-[var(--header-h)] border-b border-silver-2/80 bg-cream/95 backdrop-blur-sm">
       <div className="wrap flex h-full items-center gap-6">
         <Link to="/" className="shrink-0 text-oxblood" aria-label={`${t.brand}, home`}>
-          <Lockup height={40} nameClass="text-[20px] min-[1600px]:text-[22px]" />
+          <Lockup height={36} nameClass="text-[16px]" />
         </Link>
 
         <nav aria-label="Main" className="ms-auto flex items-center gap-5 text-[15px] min-[1600px]:gap-7 min-[1600px]:text-[16px]">

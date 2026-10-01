@@ -1,6 +1,8 @@
 // UI strings in one place so a translation can be added later (L11).
 export const t = {
-  brand: 'Maghanmal Jethanand Group',
+  brand: 'Maghanmal Jethanand',
+  // Tatweel (U+0640) stretches the joins so the line runs exactly as wide as the English at 1.356em. Keep both in step.
+  brandAr: 'مــغــنــمــال جــيــثــانـانـد',
   short: 'MJ Group',
   est: 'Group established 1942',
   nav: [
@@ -49,6 +51,11 @@ export const t = {
     browse: "I'd like to browse",
     knowHelp: 'Type a designation. We match shape and size, with or without spaces.',
     try: 'Try',
+    upload: 'Have a list ready? Upload it',
+    uploadHelp: 'CSV or Excel (.xlsx) with a designation and quantity on each line. Drop it here or click to choose.',
+    reading: 'Reading your list…',
+    templateLink: 'Download a template',
+    template: 'Designation,Quantity,Unit,Length,Grade\nSHS 100x100,24,pcs,6,S355J2H\nIPE 200,12,pcs,12,\n',
   },
   grades: {
     title: 'Grades, side by side',

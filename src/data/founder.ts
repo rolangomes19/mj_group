@@ -3,7 +3,7 @@
 export const founder = {
   name: 'Maghanmal Jethanand Pancholia',
   dates: '1924 to 2019',
-  heroLine: 'He reached Sharjah in 1942 by way of Karachi, and moved to Dubai in 1943.',
+  heroLine: 'He crossed the sea at 17 for a fare of Rs23, then helped bring power to Dubai, served on its Chamber and helped found a school.',
   origin: [
     'Maghanmal Jethanand Pancholia was born on 24 October 1924.',
     'He reached Sharjah in 1942 by way of Karachi, and moved to Dubai in 1943.',

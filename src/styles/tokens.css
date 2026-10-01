@@ -20,6 +20,7 @@
 
   --font-display: 'Faculty Glyphic', Georgia, 'Times New Roman', serif;
   --font-sans: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-arabic: 'IBM Plex Sans Arabic', 'IBM Plex Sans', system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 
   --radius-DEFAULT: 2px;
@@ -291,4 +292,27 @@ dialog.drawer::backdrop {
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-in { animation: none; }
+}
+
+/* Chequered-plate lozenges. A glow that dissolves outward from --plate-at, laid inside existing surfaces. */
+.plate {
+  --plate-tile: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Cg fill='%23000'%3E%3Crect x='-11' y='-3.25' width='22' height='6.5' rx='3.25' transform='translate(14 14) rotate(45)'/%3E%3Crect x='-11' y='-3.25' width='22' height='6.5' rx='3.25' transform='translate(42 14) rotate(-45)'/%3E%3Crect x='-11' y='-3.25' width='22' height='6.5' rx='3.25' transform='translate(14 42) rotate(-45)'/%3E%3Crect x='-11' y='-3.25' width='22' height='6.5' rx='3.25' transform='translate(42 42) rotate(45)'/%3E%3C/g%3E%3C/svg%3E");
+  --plate-at: 50% 100%;
+  --plate-rx: 70%;
+  --plate-ry: 100%;
+  background:
+    linear-gradient(100deg, transparent 38%, rgb(255 226 190 / 0.9) 50%, transparent 62%) 130% 0 / 260% 100% no-repeat,
+    radial-gradient(ellipse var(--plate-rx) var(--plate-ry) at var(--plate-at), rgb(240 138 60 / 0.55), rgb(192 40 27 / 0.28) 50%, rgb(154 161 168 / 0.06));
+  -webkit-mask: var(--plate-tile) 0 0 / 56px 56px, radial-gradient(ellipse var(--plate-rx) var(--plate-ry) at var(--plate-at), #000, transparent);
+  -webkit-mask-composite: source-in;
+  mask: var(--plate-tile) 0 0 / 56px 56px, radial-gradient(ellipse var(--plate-rx) var(--plate-ry) at var(--plate-at), #000, transparent);
+  mask-composite: intersect;
+  animation: plate-glint 10s ease-in-out infinite;
+}
+@keyframes plate-glint {
+  0%, 35% { background-position: 130% 0, 0 0; }
+  80%, 100% { background-position: -30% 0, 0 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .plate { animation: none; }
 }

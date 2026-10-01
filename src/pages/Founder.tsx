@@ -2,7 +2,9 @@ import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router'
 import { HeatRule } from '../components/HeatRule'
 import { MonogramPlate } from '../components/MonogramPlate'
+import { PlateTexture } from '../components/PlateTexture'
 import { Placeholder } from '../components/Placeholder'
+import emberPortrait from '../assets/images/maghaba-ember.png'
 import { Section } from '../components/Section'
 import { t } from '../copy/en'
 import { founder } from '../data/founder'
@@ -14,14 +16,12 @@ export default function Founder() {
   return (
     <>
       {/* 1. Hero */}
-      <section className="on-dark relative isolate overflow-hidden bg-forge text-cream">
-        <div aria-hidden className="absolute inset-y-0 end-0 w-[52%]">
-          <Placeholder slot="founder-portrait" fill tone="heat" position="50% 18%" alt="" />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,#1a1210_0%,rgb(26_18_16_/_.55)_30%,transparent_70%)]" />
-        </div>
-        <div aria-hidden className="absolute inset-0" style={{ background: 'radial-gradient(45% 60% at 30% 100%, rgba(240,138,60,.35), rgba(192,40,27,.2) 45%, transparent 75%)' }} />
+      <section className="on-dark relative isolate overflow-hidden text-cream" style={{ background: 'linear-gradient(260deg, #7a0000 0%, #3a0a06 42%, #1a1210 85%)' }}>
+        <PlateTexture at="76% 50%" rx="62%" ry="95%" className="inset-0" />
+        <img src={emberPortrait} alt="Maghanmal Jethanand Pancholia" className="absolute bottom-0 end-[3%] -z-0 h-[92%] w-auto max-w-none" />
+        <div aria-hidden className="absolute inset-0" style={{ background: 'radial-gradient(40% 55% at 20% 100%, rgba(240,138,60,.22), rgba(192,40,27,.12) 50%, transparent 75%)' }} />
         <div aria-hidden className="grain absolute inset-0 opacity-[.06]" />
-        <div className="wrap relative flex min-h-[720px] flex-col justify-end pb-24 pt-28">
+        <div className="wrap relative flex min-h-[760px] flex-col justify-end pb-24 pt-28">
           <p className="hero-in font-mono text-[14px] text-molten">{t.founderBand.label}</p>
           <h1 className="t-display hero-in mt-6 max-w-[14ch] text-cream" style={{ animationDelay: '80ms' }}>
             {founder.name}

@@ -11,7 +11,10 @@ export function Lockup({ height = 40, className = '', nameClass = '' }: { height
   return (
     <span className={`inline-flex items-center gap-3 ${className}`}>
       <Monogram height={height} />
-      <span className={`font-display leading-none ${nameClass}`}>{t.brand}</span>
+      <span className={`flex flex-col gap-[3px] font-sans font-medium leading-none ${nameClass}`}>
+        <span className="whitespace-nowrap">{t.brand}</span>
+        <span lang="ar" dir="rtl" className="font-arabic whitespace-nowrap text-[1.356em]">{t.brandAr}</span>
+      </span>
     </span>
   )
 }
